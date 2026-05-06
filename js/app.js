@@ -434,3 +434,23 @@
     window.addEventListener('hashchange', openHashTarget);
   });
 })();
+
+  // ── Auto-generated docs: show last-updated info ──────
+  fetch('assets/build-meta.json')
+    .then(r => r.ok ? r.json() : null)
+    .then(meta => {
+      if (!meta) return;
+      const el = document.querySelector('.footer__copy');
+      if (!el) return;
+      const d = new Date(meta.generatedAt);
+      const fmt = d.toLocaleDateString('en-US', {
+        year: 'numeric', month: 'short', day: 'numeric',
+        hour: '2-digit', minute: '2-digit', timeZoneName: 'short',
+      });
+      const badge = document.createElement('span');
+      badge.className = 'footer__updated';
+      badge.textContent = ` · Docs last updated ${fmt}`;
+      badge.style.cssText = 'opacity:.6;font-size:.85em;';
+      el.appendChild(badge);
+    })
+    .catch(() => {});
