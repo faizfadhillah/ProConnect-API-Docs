@@ -14,7 +14,7 @@
         "method": "GET",
         "path": "/Tests/ThrowError",
         "summary": "Test endpoint that throws BadRequestException for logging test",
-        "isPublic": false
+        "isPublic": true
       }
     ]
   },
@@ -94,7 +94,8 @@
         "method": "PATCH",
         "path": "/applicant-steps/:id",
         "summary": "Update an applicant step",
-        "isPublic": false
+        "isPublic": false,
+        "requestBody": "UpdateApplicantStepDto"
       },
       {
         "method": "DELETE",
@@ -162,19 +163,128 @@
         "method": "POST",
         "path": "/applicants",
         "summary": "Create a new applicant",
-        "isPublic": false
+        "isPublic": false,
+        "requestBody": "CreateApplicantDto",
+        "bodyFields": [
+          {
+            "name": "job_id",
+            "type": "string",
+            "optional": false
+          },
+          {
+            "name": "user_id",
+            "type": "string",
+            "optional": false
+          },
+          {
+            "name": "type",
+            "type": "Object,",
+            "optional": false
+          },
+          {
+            "name": "description",
+            "type": "\"Additional attributes in JSON format\",",
+            "optional": false
+          },
+          {
+            "name": "example",
+            "type": "{ experience: \"5 years\", skills: [\"JavaScript\", \"TypeScript\"…",
+            "optional": false
+          },
+          {
+            "name": "attributes",
+            "type": "Record<string, any>",
+            "optional": false
+          },
+          {
+            "name": "region_id",
+            "type": "string",
+            "optional": true
+          },
+          {
+            "name": "status",
+            "type": "ApplicantStatus",
+            "optional": true
+          }
+        ]
       },
       {
         "method": "PATCH",
         "path": "/applicants/:jobId/:userId",
         "summary": "Update an applicant",
-        "isPublic": false
+        "isPublic": false,
+        "requestBody": "UpdateApplicantDto",
+        "bodyFields": [
+          {
+            "name": "type",
+            "type": "Object,",
+            "optional": false
+          },
+          {
+            "name": "description",
+            "type": "\"Additional attributes in JSON format\",",
+            "optional": false
+          },
+          {
+            "name": "example",
+            "type": "{ experience: \"5 years\", skills: [\"JavaScript\", \"TypeScript\"…",
+            "optional": false
+          },
+          {
+            "name": "attributes",
+            "type": "Record<string, any>",
+            "optional": false
+          },
+          {
+            "name": "status",
+            "type": "ApplicantStatus",
+            "optional": false
+          },
+          {
+            "name": "last_applicant_job_step_id",
+            "type": "string",
+            "optional": false
+          }
+        ]
       },
       {
         "method": "PATCH",
         "path": "/applicants/:id",
         "summary": "Update an applicant",
-        "isPublic": false
+        "isPublic": false,
+        "requestBody": "UpdateApplicantDto",
+        "bodyFields": [
+          {
+            "name": "type",
+            "type": "Object,",
+            "optional": false
+          },
+          {
+            "name": "description",
+            "type": "\"Additional attributes in JSON format\",",
+            "optional": false
+          },
+          {
+            "name": "example",
+            "type": "{ experience: \"5 years\", skills: [\"JavaScript\", \"TypeScript\"…",
+            "optional": false
+          },
+          {
+            "name": "attributes",
+            "type": "Record<string, any>",
+            "optional": false
+          },
+          {
+            "name": "status",
+            "type": "ApplicantStatus",
+            "optional": false
+          },
+          {
+            "name": "last_applicant_job_step_id",
+            "type": "string",
+            "optional": false
+          }
+        ]
       },
       {
         "method": "DELETE",
@@ -267,7 +377,80 @@
         "method": "POST",
         "path": "/company-files",
         "summary": "Create a new CompanyFile",
-        "isPublic": false
+        "isPublic": false,
+        "requestBody": "CreateCompanyFileDto",
+        "bodyFields": [
+          {
+            "name": "company_id",
+            "type": "string",
+            "optional": false
+          },
+          {
+            "name": "type",
+            "type": "String,",
+            "optional": false
+          },
+          {
+            "name": "description",
+            "type": "\"The name of the file\",",
+            "optional": false
+          },
+          {
+            "name": "example",
+            "type": "\"example.txt\",",
+            "optional": false
+          },
+          {
+            "name": "file_name",
+            "type": "string",
+            "optional": false
+          },
+          {
+            "name": "type",
+            "type": "String,",
+            "optional": false
+          },
+          {
+            "name": "description",
+            "type": "\"The type of the file (pdf, doc, docx, xls, xlsx, jpg, png, …",
+            "optional": false
+          },
+          {
+            "name": "enum",
+            "type": "FileType,",
+            "optional": false
+          },
+          {
+            "name": "example",
+            "type": "FileType.PDF,",
+            "optional": false
+          },
+          {
+            "name": "file_type",
+            "type": "FileType",
+            "optional": false
+          },
+          {
+            "name": "type",
+            "type": "String,",
+            "optional": false
+          },
+          {
+            "name": "description",
+            "type": "\"The URL of the file\",",
+            "optional": false
+          },
+          {
+            "name": "example",
+            "type": "\"https:",
+            "optional": false
+          },
+          {
+            "name": "file_url",
+            "type": "string",
+            "optional": false
+          }
+        ]
       },
       {
         "method": "GET",
@@ -340,7 +523,7 @@
         "method": "PATCH",
         "path": "/configs/:id",
         "summary": "Update a config by ID",
-        "isPublic": false
+        "isPublic": true
       },
       {
         "method": "DELETE",
@@ -384,7 +567,40 @@
         "method": "POST",
         "path": "/encrypted-user-data",
         "summary": "Create encrypted user data",
-        "isPublic": false
+        "isPublic": false,
+        "requestBody": "CreateEncryptedUserDataDto",
+        "bodyFields": [
+          {
+            "name": "user_id",
+            "type": "string",
+            "optional": false
+          },
+          {
+            "name": "encrypted_date_of_birth",
+            "type": "string",
+            "optional": false
+          },
+          {
+            "name": "encrypted_nik",
+            "type": "string",
+            "optional": true
+          },
+          {
+            "name": "encrypted_phone",
+            "type": "string",
+            "optional": true
+          },
+          {
+            "name": "encrypted_address",
+            "type": "string",
+            "optional": true
+          },
+          {
+            "name": "country_code",
+            "type": "string",
+            "optional": true
+          }
+        ]
       },
       {
         "method": "GET",
@@ -402,7 +618,20 @@
         "method": "PATCH",
         "path": "/encrypted-user-data/:user_id",
         "summary": "Update encrypted user data by user id",
-        "isPublic": false
+        "isPublic": false,
+        "requestBody": "UpdateEncryptedUserDataDto",
+        "bodyFields": [
+          {
+            "name": "updated_at",
+            "type": "Date",
+            "optional": false
+          },
+          {
+            "name": "updated_by",
+            "type": "string | null",
+            "optional": true
+          }
+        ]
       },
       {
         "method": "DELETE",
@@ -427,7 +656,45 @@
         "method": "POST",
         "path": "/event-pakets",
         "summary": "Create a new EventPaket",
-        "isPublic": false
+        "isPublic": false,
+        "requestBody": "CreateEventPaketDto",
+        "bodyFields": [
+          {
+            "name": "event_id",
+            "type": "string",
+            "optional": false
+          },
+          {
+            "name": "type",
+            "type": "String,",
+            "optional": false
+          },
+          {
+            "name": "description",
+            "type": "\"The name of the event paket\",",
+            "optional": false
+          },
+          {
+            "name": "example",
+            "type": "\"Premium Package\",",
+            "optional": false
+          },
+          {
+            "name": "name",
+            "type": "string",
+            "optional": false
+          },
+          {
+            "name": "description",
+            "type": "string",
+            "optional": false
+          },
+          {
+            "name": "price",
+            "type": "number",
+            "optional": false
+          }
+        ]
       },
       {
         "method": "GET",
@@ -470,7 +737,75 @@
         "method": "POST",
         "path": "/events",
         "summary": "Create a new Event",
-        "isPublic": false
+        "isPublic": false,
+        "requestBody": "CreateEventDto",
+        "bodyFields": [
+          {
+            "name": "type",
+            "type": "String,",
+            "optional": false
+          },
+          {
+            "name": "description",
+            "type": "\"The title of the event\",",
+            "optional": false
+          },
+          {
+            "name": "example",
+            "type": "\"Annual Meeting\",",
+            "optional": false
+          },
+          {
+            "name": "title",
+            "type": "string",
+            "optional": false
+          },
+          {
+            "name": "description",
+            "type": "string",
+            "optional": false
+          },
+          {
+            "name": "type",
+            "type": "Date,",
+            "optional": false
+          },
+          {
+            "name": "description",
+            "type": "\"The date of the event\",",
+            "optional": false
+          },
+          {
+            "name": "example",
+            "type": "\"2023-12-25T10:00:00Z\",",
+            "optional": false
+          },
+          {
+            "name": "event_date",
+            "type": "Date",
+            "optional": false
+          },
+          {
+            "name": "type",
+            "type": "String,",
+            "optional": false
+          },
+          {
+            "name": "description",
+            "type": "\"The tags of the event\",",
+            "optional": false
+          },
+          {
+            "name": "example",
+            "type": "\"technology\",",
+            "optional": false
+          },
+          {
+            "name": "tags",
+            "type": "string",
+            "optional": false
+          }
+        ]
       },
       {
         "method": "GET",
@@ -488,7 +823,8 @@
         "method": "PATCH",
         "path": "/events/:id",
         "summary": "Update an Event by ID",
-        "isPublic": false
+        "isPublic": false,
+        "requestBody": "UpdateEventDto"
       },
       {
         "method": "DELETE",
@@ -513,7 +849,55 @@
         "method": "POST",
         "path": "/feedbacks",
         "summary": "Create a new post",
-        "isPublic": false
+        "isPublic": false,
+        "requestBody": "CreateFeedbackDto",
+        "bodyFields": [
+          {
+            "name": "user_id",
+            "type": "string",
+            "optional": false
+          },
+          {
+            "name": "type",
+            "type": "FeedbackType",
+            "optional": true
+          },
+          {
+            "name": "email",
+            "type": "string",
+            "optional": false
+          },
+          {
+            "name": "type",
+            "type": "String,",
+            "optional": true
+          },
+          {
+            "name": "description",
+            "type": "\"The description of feedbacks\",",
+            "optional": true
+          },
+          {
+            "name": "example",
+            "type": "\"lorem ipsum add data case on registration, how to solved it…",
+            "optional": true
+          },
+          {
+            "name": "description",
+            "type": "string",
+            "optional": false
+          },
+          {
+            "name": "attachment_url",
+            "type": "string",
+            "optional": false
+          },
+          {
+            "name": "status",
+            "type": "FeedbackStatus",
+            "optional": true
+          }
+        ]
       },
       {
         "method": "GET",
@@ -525,13 +909,14 @@
         "method": "GET",
         "path": "/feedbacks/:id",
         "summary": "Get a post by ID",
-        "isPublic": false
+        "isPublic": true
       },
       {
         "method": "PATCH",
         "path": "/feedbacks/:id",
         "summary": "Update a post by ID",
-        "isPublic": false
+        "isPublic": false,
+        "requestBody": "UpdateFeedbackDto"
       },
       {
         "method": "DELETE",
@@ -556,7 +941,30 @@
         "method": "POST",
         "path": "/firebase/send-notification",
         "summary": "",
-        "isPublic": false
+        "isPublic": false,
+        "requestBody": "SendNotificationDto",
+        "bodyFields": [
+          {
+            "name": "type",
+            "type": "String,",
+            "optional": false
+          },
+          {
+            "name": "title",
+            "type": "string",
+            "optional": false
+          },
+          {
+            "name": "type",
+            "type": "String,",
+            "optional": false
+          },
+          {
+            "name": "body",
+            "type": "string",
+            "optional": false
+          }
+        ]
       },
       {
         "method": "GET",
@@ -604,7 +1012,7 @@
         "method": "DELETE",
         "path": "/firebase/orphan-users/bulk",
         "summary": "Bulk delete Firebase orphan users",
-        "isPublic": false
+        "isPublic": true
       },
       {
         "method": "POST",
@@ -721,7 +1129,60 @@
         "method": "POST",
         "path": "/group-members",
         "summary": "Create a new Group Member",
-        "isPublic": false
+        "isPublic": false,
+        "requestBody": "CreateGroupMembersDto",
+        "bodyFields": [
+          {
+            "name": "group_id",
+            "type": "string",
+            "optional": false
+          },
+          {
+            "name": "user_id",
+            "type": "string",
+            "optional": false
+          },
+          {
+            "name": "type",
+            "type": "String,",
+            "optional": false
+          },
+          {
+            "name": "description",
+            "type": "\"The role of the user in the group\",",
+            "optional": false
+          },
+          {
+            "name": "example",
+            "type": "\"admin\",",
+            "optional": false
+          },
+          {
+            "name": "role",
+            "type": "string",
+            "optional": false
+          },
+          {
+            "name": "type",
+            "type": "String,",
+            "optional": false
+          },
+          {
+            "name": "description",
+            "type": "\"The date the user joined the group\",",
+            "optional": false
+          },
+          {
+            "name": "example",
+            "type": "\"2024-10-11T00:00:00.000Z\",",
+            "optional": false
+          },
+          {
+            "name": "joined_at",
+            "type": "Date",
+            "optional": false
+          }
+        ]
       },
       {
         "method": "GET",
@@ -764,7 +1225,35 @@
         "method": "POST",
         "path": "/groups",
         "summary": "Create a new Group",
-        "isPublic": false
+        "isPublic": false,
+        "requestBody": "CreateGroupsDto",
+        "bodyFields": [
+          {
+            "name": "type",
+            "type": "String,",
+            "optional": false
+          },
+          {
+            "name": "description",
+            "type": "\"The name of the group\",",
+            "optional": false
+          },
+          {
+            "name": "example",
+            "type": "\"Developers Group\",",
+            "optional": false
+          },
+          {
+            "name": "name",
+            "type": "string",
+            "optional": false
+          },
+          {
+            "name": "description",
+            "type": "string",
+            "optional": false
+          }
+        ]
       },
       {
         "method": "GET",
@@ -782,7 +1271,8 @@
         "method": "PATCH",
         "path": "/groups/:id",
         "summary": "Update a Group by ID",
-        "isPublic": false
+        "isPublic": false,
+        "requestBody": "UpdateGroupsDto"
       },
       {
         "method": "DELETE",
@@ -807,7 +1297,90 @@
         "method": "POST",
         "path": "/invoices",
         "summary": "Create a new Invoice",
-        "isPublic": false
+        "isPublic": false,
+        "requestBody": "CreateInvoiceDto",
+        "bodyFields": [
+          {
+            "name": "userId",
+            "type": "string",
+            "optional": false
+          },
+          {
+            "name": "type",
+            "type": "String,",
+            "optional": false
+          },
+          {
+            "name": "description",
+            "type": "\"The invoice number\",",
+            "optional": false
+          },
+          {
+            "name": "example",
+            "type": "\"INV-12345\",",
+            "optional": false
+          },
+          {
+            "name": "invoiceNumber",
+            "type": "string",
+            "optional": false
+          },
+          {
+            "name": "type",
+            "type": "String,",
+            "optional": false
+          },
+          {
+            "name": "description",
+            "type": "\"The payment method used\",",
+            "optional": false
+          },
+          {
+            "name": "example",
+            "type": "\"Credit Card\",",
+            "optional": false
+          },
+          {
+            "name": "paymentMethod",
+            "type": "string",
+            "optional": false
+          },
+          {
+            "name": "amount",
+            "type": "number",
+            "optional": false
+          },
+          {
+            "name": "type",
+            "type": "String,",
+            "optional": false
+          },
+          {
+            "name": "description",
+            "type": "\"The status of the invoice (paid, pending, overdue)\",",
+            "optional": false
+          },
+          {
+            "name": "enum",
+            "type": "InvoiceStatus,",
+            "optional": false
+          },
+          {
+            "name": "example",
+            "type": "InvoiceStatus.PAID,",
+            "optional": false
+          },
+          {
+            "name": "status",
+            "type": "InvoiceStatus",
+            "optional": false
+          },
+          {
+            "name": "subscriptionId",
+            "type": "string",
+            "optional": false
+          }
+        ]
       },
       {
         "method": "GET",
@@ -831,7 +1404,8 @@
         "method": "PATCH",
         "path": "/invoices/:id",
         "summary": "Update an Invoice by ID",
-        "isPublic": false
+        "isPublic": false,
+        "requestBody": "UpdateInvoiceDto"
       },
       {
         "method": "DELETE",
@@ -856,7 +1430,40 @@
         "method": "POST",
         "path": "/invoices-items",
         "summary": "Create a new InvoicesItem",
-        "isPublic": false
+        "isPublic": false,
+        "requestBody": "CreateInvoicesItemDto",
+        "bodyFields": [
+          {
+            "name": "invoice_id",
+            "type": "string",
+            "optional": false
+          },
+          {
+            "name": "paket_id",
+            "type": "string",
+            "optional": false
+          },
+          {
+            "name": "price",
+            "type": "number",
+            "optional": false
+          },
+          {
+            "name": "qty",
+            "type": "number",
+            "optional": false
+          },
+          {
+            "name": "amount",
+            "type": "number",
+            "optional": false
+          },
+          {
+            "name": "status",
+            "type": "InvoiceItemStatus",
+            "optional": false
+          }
+        ]
       },
       {
         "method": "GET",
@@ -948,7 +1555,275 @@
         "method": "POST",
         "path": "/jobs",
         "summary": "Create a new job",
-        "isPublic": false
+        "isPublic": false,
+        "requestBody": "CreateJobDto",
+        "bodyFields": [
+          {
+            "name": "company_id",
+            "type": "string",
+            "optional": false
+          },
+          {
+            "name": "type",
+            "type": "String,",
+            "optional": true
+          },
+          {
+            "name": "description",
+            "type": "\"The title of the job position\",",
+            "optional": true
+          },
+          {
+            "name": "example",
+            "type": "\"Senior Software Engineer\",",
+            "optional": true
+          },
+          {
+            "name": "title",
+            "type": "string",
+            "optional": false
+          },
+          {
+            "name": "type",
+            "type": "String,",
+            "optional": false
+          },
+          {
+            "name": "description",
+            "type": "\"Detailed description of the job\",",
+            "optional": false
+          },
+          {
+            "name": "example",
+            "type": "\"We are looking for an experienced software engineer...\",",
+            "optional": false
+          },
+          {
+            "name": "message",
+            "type": "\"Description is mandatory. Please complete the description.\"…",
+            "optional": false
+          },
+          {
+            "name": "description",
+            "type": "string",
+            "optional": false
+          },
+          {
+            "name": "region_id",
+            "type": "string",
+            "optional": false
+          },
+          {
+            "name": "is_outside_indo",
+            "type": "boolean",
+            "optional": true
+          },
+          {
+            "name": "type",
+            "type": "String,",
+            "optional": true
+          },
+          {
+            "name": "description",
+            "type": "\"The other country out of indonesia\",",
+            "optional": true
+          },
+          {
+            "name": "example",
+            "type": "\"US\",",
+            "optional": true
+          },
+          {
+            "name": "nullable",
+            "type": "true,",
+            "optional": true
+          },
+          {
+            "name": "other_country",
+            "type": "string | null",
+            "optional": false
+          },
+          {
+            "name": "type",
+            "type": "String,",
+            "optional": true
+          },
+          {
+            "name": "description",
+            "type": "\"The other region out of indonesia\",",
+            "optional": true
+          },
+          {
+            "name": "example",
+            "type": "\"California\",",
+            "optional": true
+          },
+          {
+            "name": "nullable",
+            "type": "true,",
+            "optional": true
+          },
+          {
+            "name": "other_region",
+            "type": "string | null",
+            "optional": false
+          },
+          {
+            "name": "type",
+            "type": "String,",
+            "optional": true
+          },
+          {
+            "name": "description",
+            "type": "\"The salary pay interval\",",
+            "optional": true
+          },
+          {
+            "name": "example",
+            "type": "\"monthly\",",
+            "optional": true
+          },
+          {
+            "name": "nullable",
+            "type": "true,",
+            "optional": true
+          },
+          {
+            "name": "salary_pay_interval",
+            "type": "string | null",
+            "optional": false
+          },
+          {
+            "name": "salary_country_id",
+            "type": "string",
+            "optional": true
+          },
+          {
+            "name": "min_salary",
+            "type": "number",
+            "optional": true
+          },
+          {
+            "name": "max_salary",
+            "type": "number",
+            "optional": true
+          },
+          {
+            "name": "status",
+            "type": "JobStatus",
+            "optional": true
+          },
+          {
+            "name": "employment_status",
+            "type": "any",
+            "optional": true
+          },
+          {
+            "name": "domicile_status",
+            "type": "any",
+            "optional": true
+          },
+          {
+            "name": "interest_ids",
+            "type": "string[]",
+            "optional": true
+          },
+          {
+            "name": "skill_ids",
+            "type": "string[]",
+            "optional": true
+          },
+          {
+            "name": "profession_ids",
+            "type": "string[]",
+            "optional": true
+          },
+          {
+            "name": "right_to_work_ids",
+            "type": "string[]",
+            "optional": true
+          },
+          {
+            "name": "language_ids",
+            "type": "string[]",
+            "optional": true
+          },
+          {
+            "name": "config",
+            "type": "Record<string, any>",
+            "optional": true
+          },
+          {
+            "name": "type",
+            "type": "String,",
+            "optional": false
+          },
+          {
+            "name": "format",
+            "type": "\"date\",",
+            "optional": false
+          },
+          {
+            "name": "description",
+            "type": "\"Date when the job is automatically published (optional). Da…",
+            "optional": false
+          },
+          {
+            "name": "example",
+            "type": "\"2025-03-01\",",
+            "optional": false
+          },
+          {
+            "name": "nullable",
+            "type": "true,",
+            "optional": false
+          },
+          {
+            "name": "required",
+            "type": "false,",
+            "optional": false
+          },
+          {
+            "name": "open_date",
+            "type": "Date | null",
+            "optional": true
+          },
+          {
+            "name": "type",
+            "type": "String,",
+            "optional": true
+          },
+          {
+            "name": "format",
+            "type": "\"date\",",
+            "optional": false
+          },
+          {
+            "name": "description",
+            "type": "\"Date when the job is automatically closed (optional). Min D…",
+            "optional": false
+          },
+          {
+            "name": "example",
+            "type": "\"2025-06-30\",",
+            "optional": false
+          },
+          {
+            "name": "nullable",
+            "type": "true,",
+            "optional": false
+          },
+          {
+            "name": "required",
+            "type": "false,",
+            "optional": false
+          },
+          {
+            "name": "close_date",
+            "type": "Date | null",
+            "optional": true
+          }
+        ]
       },
       {
         "method": "GET",
@@ -966,7 +1841,7 @@
         "method": "GET",
         "path": "/jobs/trigger-auto-publish",
         "summary": "Trigger auto-publish (superadmin only)",
-        "isPublic": false
+        "isPublic": true
       },
       {
         "method": "GET",
@@ -984,7 +1859,8 @@
         "method": "PATCH",
         "path": "/jobs/:id",
         "summary": "Update a job by ID",
-        "isPublic": false
+        "isPublic": false,
+        "requestBody": "UpdateJobDto"
       },
       {
         "method": "DELETE",
@@ -2010,7 +2886,45 @@
         "method": "POST",
         "path": "/mst-subscription",
         "summary": "Create a new subscription",
-        "isPublic": false
+        "isPublic": false,
+        "requestBody": "CreateMstSubscriptionDto",
+        "bodyFields": [
+          {
+            "name": "type",
+            "type": "String,",
+            "optional": false
+          },
+          {
+            "name": "description",
+            "type": "\"The name of the subscription\",",
+            "optional": false
+          },
+          {
+            "name": "example",
+            "type": "\"Premium Plan\",",
+            "optional": false
+          },
+          {
+            "name": "name",
+            "type": "string",
+            "optional": false
+          },
+          {
+            "name": "description",
+            "type": "string",
+            "optional": false
+          },
+          {
+            "name": "price",
+            "type": "number",
+            "optional": false
+          },
+          {
+            "name": "duration",
+            "type": "number",
+            "optional": false
+          }
+        ]
       },
       {
         "method": "GET",
@@ -2059,7 +2973,50 @@
         "method": "POST",
         "path": "/mst-tags",
         "summary": "Create a new MstTag",
-        "isPublic": false
+        "isPublic": false,
+        "requestBody": "CreateMstTagDto",
+        "bodyFields": [
+          {
+            "name": "type",
+            "type": "String,",
+            "optional": false
+          },
+          {
+            "name": "description",
+            "type": "\"The ty of tags e.g POST, EVENT, PROFESSION\",",
+            "optional": false
+          },
+          {
+            "name": "example",
+            "type": "\"POST\",",
+            "optional": false
+          },
+          {
+            "name": "type",
+            "type": "string",
+            "optional": false
+          },
+          {
+            "name": "type",
+            "type": "String,",
+            "optional": false
+          },
+          {
+            "name": "description",
+            "type": "\"The tag for the event\",",
+            "optional": false
+          },
+          {
+            "name": "example",
+            "type": "\"Technology\",",
+            "optional": false
+          },
+          {
+            "name": "tag",
+            "type": "string",
+            "optional": false
+          }
+        ]
       },
       {
         "method": "GET",
@@ -2077,7 +3034,8 @@
         "method": "PATCH",
         "path": "/mst-tags/:id",
         "summary": "Update an MstTag by ID",
-        "isPublic": false
+        "isPublic": false,
+        "requestBody": "UpdateMstTagDto"
       },
       {
         "method": "DELETE",
@@ -2096,13 +3054,15 @@
         "method": "POST",
         "path": "/notifications/webhook/mailjet",
         "summary": "Receive Mailjet webhook events",
-        "isPublic": false
+        "isPublic": false,
+        "requestBody": "MailjetWebhookEventDto"
       },
       {
         "method": "POST",
         "path": "/notifications/test/send-email",
         "summary": "Send test email",
-        "isPublic": false
+        "isPublic": false,
+        "requestBody": "TestSendEmailDto"
       }
     ]
   },
@@ -2165,7 +3125,50 @@
         "method": "POST",
         "path": "/posts",
         "summary": "Create a new post",
-        "isPublic": false
+        "isPublic": false,
+        "requestBody": "CreatePostDto",
+        "bodyFields": [
+          {
+            "name": "user_id",
+            "type": "string",
+            "optional": false
+          },
+          {
+            "name": "company_id",
+            "type": "string",
+            "optional": false
+          },
+          {
+            "name": "content",
+            "type": "string",
+            "optional": false
+          },
+          {
+            "name": "post_type",
+            "type": "PostType",
+            "optional": false
+          },
+          {
+            "name": "type",
+            "type": "String,",
+            "optional": false
+          },
+          {
+            "name": "description",
+            "type": "\"The tags of the post\",",
+            "optional": false
+          },
+          {
+            "name": "example",
+            "type": "\"Technology\",",
+            "optional": false
+          },
+          {
+            "name": "tags",
+            "type": "string",
+            "optional": false
+          }
+        ]
       },
       {
         "method": "GET",
@@ -2183,7 +3186,8 @@
         "method": "PATCH",
         "path": "/posts/:id",
         "summary": "Update a post by ID",
-        "isPublic": false
+        "isPublic": false,
+        "requestBody": "UpdatePostDto"
       },
       {
         "method": "DELETE",
