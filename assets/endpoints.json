@@ -3978,6 +3978,12 @@
       },
       {
         "method": "POST",
+        "path": "/users/admin-accounts",
+        "summary": "Create new admin account (sys_admin only)",
+        "isPublic": false
+      },
+      {
+        "method": "POST",
         "path": "/users",
         "summary": "Create a new user",
         "isPublic": true
