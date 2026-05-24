@@ -516,12 +516,540 @@ code {
   font-weight: 600;
 }
 
-/* ==================== */
-/* RESPONSIVE           */
-/* ==================== */
+/* ============================================= */
+/* RESPONSIVE — FULL MOBILE COMPATIBILITY        */
+/* ============================================= */
+
+/* ---------- Tablet (max-width: 996px) ---------- */
 @media (max-width: 996px) {
+  /* Typography scaling */
   article h1 {
-    font-size: 1.6rem;
+    font-size: 1.5rem;
+    padding-bottom: 0.4rem;
+    margin-bottom: 1.25rem;
+    word-break: break-word;
+  }
+
+  article h2 {
+    font-size: 1.25rem;
+    margin-top: 2rem;
+  }
+
+  article h3 {
+    font-size: 1.05rem;
+    margin-top: 1.5rem;
+  }
+
+  /* Content area */
+  article {
+    max-width: 100%;
+    padding: 0 0.5rem;
+  }
+
+  /* Navbar */
+  .navbar {
+    padding: 0 1rem;
+  }
+
+  .navbar__logo img {
+    height: 26px;
+  }
+
+  /* Hide ToC on tablet (Docusaurus hides sidebar already) */
+  .table-of-contents {
+    display: none;
+  }
+
+  /* Endpoint blocks */
+  .endpoint-block {
+    padding: 1rem;
+    margin: 1rem 0;
+  }
+
+  .endpoint-header {
+    flex-wrap: wrap;
+    font-size: 0.85rem;
+    gap: 0.5rem;
+  }
+
+  /* Tables — horizontal scroll wrapper */
+  table {
+    font-size: 0.8rem;
+  }
+
+  table th,
+  table td {
+    padding: 0.5rem 0.625rem;
+  }
+
+  /* Code blocks */
+  pre {
+    font-size: 0.8rem !important;
+  }
+
+  code {
+    font-size: 0.8em;
+    word-break: break-word;
+  }
+
+  /* Pagination */
+  .pagination-nav__label {
+    font-size: 0.85rem;
+  }
+
+  .pagination-nav__sublabel {
+    font-size: 0.7rem;
+  }
+}
+
+/* ---------- Mobile (max-width: 768px) ---------- */
+@media (max-width: 768px) {
+  /* Root spacing overrides */
+  :root {
+    --ifm-spacing-horizontal: 1rem;
+  }
+
+  /* Typography */
+  article h1 {
+    font-size: 1.35rem;
+    border-bottom-width: 2px;
+  }
+
+  article h2 {
+    font-size: 1.15rem;
+  }
+
+  article h3 {
+    font-size: 1rem;
+  }
+
+  article p,
+  article li {
+    font-size: 0.9rem;
+    line-height: 1.6;
+  }
+
+  /* Navbar mobile menu */
+  .navbar {
+    padding: 0 0.75rem;
+  }
+
+  .navbar__logo img {
+    height: 22px;
+  }
+
+  .navbar__items .navbar__link {
+    font-size: 0.85rem;
+  }
+
+  /* Website button in mobile dropdown — full width */
+  .navbar__link--website {
+    display: block;
+    text-align: center;
+    margin: 0.5rem 0;
+    padding: 8px 16px !important;
+    font-size: 0.85rem;
+  }
+
+  /* Sidebar (mobile drawer) */
+  .navbar-sidebar {
+    width: 80vw;
+    max-width: 320px;
+  }
+
+  .navbar-sidebar .menu {
+    padding: 0.5rem;
+  }
+
+  .navbar-sidebar .menu__link {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.9rem;
+  }
+
+  .navbar-sidebar .menu__list-item-collapsible .menu__link {
+    font-size: 0.7rem;
+  }
+
+  /* Tables — make scrollable horizontally */
+  .markdown > table,
+  table {
+    display: block;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    white-space: nowrap;
+    max-width: 100%;
+  }
+
+  table thead,
+  table tbody,
+  table tr {
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+  }
+
+  /* Actually keep table as block for scroll */
+  table thead,
+  table tbody {
+    display: table-row-group;
+    width: auto;
+    min-width: 100%;
+  }
+
+  table tr {
+    display: table-row;
+    width: auto;
+  }
+
+  table th,
+  table td {
+    display: table-cell;
+    white-space: normal;
+    word-break: break-word;
+    padding: 0.4rem 0.5rem;
+    font-size: 0.78rem;
+    min-width: 80px;
+  }
+
+  /* Endpoint summary table — stack on mobile */
+  .endpoint-summary-table td:first-child {
+    width: auto;
+    white-space: normal;
+  }
+
+  .endpoint-summary-table td:nth-child(2) {
+    font-size: 0.78rem;
+    word-break: break-all;
+  }
+
+  /* Endpoint blocks */
+  .endpoint-block {
+    padding: 0.75rem;
+    margin: 0.75rem 0;
+    border-radius: 4px;
+  }
+
+  .endpoint-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.4rem;
+    font-size: 0.8rem;
+  }
+
+  .endpoint-path {
+    font-size: 0.8rem;
+    word-break: break-all;
+  }
+
+  /* Method badges */
+  .method-badge {
+    font-size: 0.6rem;
+    padding: 2px 8px;
+  }
+
+  /* Status code badges */
+  .status-code {
+    font-size: 0.7rem;
+    padding: 1px 5px;
+  }
+
+  /* Required badge */
+  .required-badge {
+    font-size: 0.6rem;
+    padding: 0 4px;
+  }
+
+  /* Code blocks — prevent overflow */
+  pre {
+    font-size: 0.75rem !important;
+    padding: 0.75rem !important;
+    border-radius: 4px !important;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  pre code {
+    white-space: pre;
+    word-break: normal;
+  }
+
+  /* Inline code */
+  code {
+    font-size: 0.78em;
+    padding: 1px 4px;
+    word-break: break-word;
+  }
+
+  /* Breadcrumbs */
+  .breadcrumbs__link {
+    font-size: 0.72rem;
+  }
+
+  .breadcrumbs__item:not(:last-child)::after {
+    margin: 0 0.25rem;
+  }
+
+  /* Pagination nav — stack */
+  .pagination-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .pagination-nav__link {
+    width: 100%;
+    padding: 0.75rem;
+  }
+
+  .pagination-nav__label {
+    font-size: 0.8rem;
+  }
+
+  /* Admonitions */
+  .alert {
+    padding: 0.75rem;
+    font-size: 0.85rem;
+  }
+
+  /* Cards */
+  .card {
+    padding: 0.75rem;
+  }
+
+  .info-card {
+    padding: 0.75rem;
+    border-radius: 6px;
+  }
+
+  /* Footer */
+  .pc-footer {
+    padding: 2.5rem 1.25rem;
+  }
+
+  .pc-footer__container {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    text-align: center;
+  }
+
+  .pc-footer__logo {
+    height: 40px;
+    margin: 0 auto;
+    display: block;
+  }
+
+  .pc-footer__tagline {
+    font-size: 0.85rem;
+  }
+
+  .pc-footer__heading {
+    font-size: 1.1rem;
+  }
+
+  .pc-footer__link {
+    font-size: 0.85rem;
+  }
+
+  .pc-footer__address {
+    font-size: 0.85rem;
+  }
+
+  .pc-footer__store-badge img {
+    height: 36px;
+  }
+
+  /* Search bar in mobile */
+  .navbar [class*="searchBar"] {
+    width: 100%;
+  }
+
+  .navbar [class*="searchBar"] input {
+    font-size: 16px; /* Prevents iOS zoom on focus */
+  }
+
+  /* Markdown images */
+  article img {
+    max-width: 100%;
+    height: auto;
+  }
+}
+
+/* ---------- Small phone (max-width: 480px) ---------- */
+@media (max-width: 480px) {
+  article h1 {
+    font-size: 1.2rem;
+  }
+
+  article h2 {
+    font-size: 1.05rem;
+  }
+
+  article h3 {
+    font-size: 0.95rem;
+  }
+
+  article p,
+  article li {
+    font-size: 0.85rem;
+    line-height: 1.55;
+  }
+
+  .navbar__logo img {
+    height: 20px;
+  }
+
+  /* Sidebar full-width on small phones */
+  .navbar-sidebar {
+    width: 100vw;
+    max-width: 100vw;
+  }
+
+  /* Tables — smaller text */
+  table th,
+  table td {
+    font-size: 0.72rem;
+    padding: 0.35rem 0.4rem;
+    min-width: 60px;
+  }
+
+  /* Endpoint header */
+  .endpoint-header {
+    font-size: 0.75rem;
+  }
+
+  .endpoint-path {
+    font-size: 0.75rem;
+  }
+
+  .method-badge {
+    font-size: 0.55rem;
+    padding: 1px 6px;
+  }
+
+  /* Code */
+  pre {
+    font-size: 0.7rem !important;
+    padding: 0.5rem !important;
+  }
+
+  code {
+    font-size: 0.72em;
+  }
+
+  /* Footer */
+  .pc-footer {
+    padding: 2rem 1rem;
+  }
+
+  .pc-footer__logo {
+    height: 34px;
+  }
+
+  .pc-footer__heading {
+    font-size: 1rem;
+  }
+
+  .pc-footer__link,
+  .pc-footer__address {
+    font-size: 0.8rem;
+  }
+
+  /* Pagination */
+  .pagination-nav__label {
+    font-size: 0.75rem;
+  }
+
+  .pagination-nav__sublabel {
+    font-size: 0.65rem;
+  }
+}
+
+/* ---------- Touch-friendly improvements ---------- */
+@media (hover: none) and (pointer: coarse) {
+  /* Larger touch targets */
+  .menu__link {
+    padding: 0.6rem 0.75rem;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+  }
+
+  .navbar__link {
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+  }
+
+  .pagination-nav__link {
+    min-height: 48px;
+  }
+
+  /* Disable hover effects on touch */
+  table tbody tr:hover {
+    background-color: transparent;
+  }
+
+  .menu__link:hover {
+    background-color: transparent;
+  }
+
+  /* Active states instead of hover */
+  .menu__link:active {
+    background-color: var(--pc-light-blue);
+  }
+
+  table tbody tr:active {
+    background-color: var(--pc-light-blue);
+  }
+
+  /* Scrollbar hide on touch */
+  ::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Better tap targets for links in tables */
+  table a {
+    padding: 4px 0;
+    display: inline-block;
+  }
+}
+
+/* ---------- Landscape phone ---------- */
+@media (max-height: 500px) and (orientation: landscape) {
+  .navbar {
+    padding: 0 0.75rem;
+    height: 48px;
+  }
+
+  .navbar__logo img {
+    height: 20px;
+  }
+
+  article h1 {
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+  }
+}
+
+/* ---------- Print styles ---------- */
+@media print {
+  .navbar,
+  .navbar-sidebar,
+  .pagination-nav,
+  .pc-footer,
+  .footer,
+  .table-of-contents,
+  [class*="searchBar"] {
+    display: none !important;
+  }
+
+  article {
+    max-width: 100%;
+  }
+
+  pre {
+    white-space: pre-wrap;
+    word-break: break-word;
   }
 }
 
@@ -733,18 +1261,7 @@ code {
   margin: 0;
 }
 
-@media (max-width: 768px) {
-  .pc-footer__container {
-    grid-template-columns: 1fr;
-    gap: 2rem;
-    text-align: center;
-  }
-
-  .pc-footer__logo {
-    margin: 0 auto;
-    display: block;
-  }
-}
+/* Footer mobile handled in RESPONSIVE section above */
 
 /* ==================== */
 /* SEARCH BAR STYLING   */
