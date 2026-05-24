@@ -1,154 +1,195 @@
-/* ProConnect API Docs - Custom Styling */
-/* Inspired by Slack dev docs aesthetic */
+/* ProConnect API Docs - Matching proconnectcareer.com design */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap');
 
 :root {
-  /* ProConnect Brand Colors */
-  --pc-primary: #1B4965;
-  --pc-secondary: #62B6CB;
-  --pc-accent: #BEE9E8;
-  --pc-highlight: #CAE9FF;
-  --pc-dark: #0B2545;
+  /* ProConnect Brand Colors — from proconnectcareer.com */
+  --pc-primary: #1560BD;
+  --pc-primary-dark: #0F4C96;
+  --pc-primary-darker: #0A3A75;
+  --pc-light-blue: #E3F2FD;
+  --pc-surface: #FAFAFA;
   --pc-white: #FFFFFF;
-  --pc-text: #333333;
+  --pc-text: rgba(41, 41, 41, 0.87);
+  --pc-text-secondary: rgba(41, 41, 41, 0.6);
+  --pc-text-hint: rgba(41, 41, 41, 0.38);
+  --pc-border: #E0E0E0;
 
   /* Docusaurus Theme Overrides */
-  --ifm-color-primary: #1B4965;
-  --ifm-color-primary-dark: #174059;
-  --ifm-color-primary-darker: #153c54;
-  --ifm-color-primary-darkest: #103145;
-  --ifm-color-primary-light: #1f5271;
-  --ifm-color-primary-lighter: #215676;
-  --ifm-color-primary-lightest: #276185;
+  --ifm-color-primary: #1560BD;
+  --ifm-color-primary-dark: #1356AA;
+  --ifm-color-primary-darker: #1250A1;
+  --ifm-color-primary-darkest: #0F4284;
+  --ifm-color-primary-light: #176AD0;
+  --ifm-color-primary-lighter: #186FD9;
+  --ifm-color-primary-lightest: #2B7EE5;
 
   --ifm-background-color: #FFFFFF;
-  --ifm-background-surface-color: #f8fafc;
-  --ifm-font-color-base: #333333;
-  --ifm-heading-color: #0B2545;
-  --ifm-link-color: #1B4965;
-  --ifm-link-hover-color: #62B6CB;
+  --ifm-background-surface-color: #FAFAFA;
+  --ifm-font-color-base: rgba(41, 41, 41, 0.87);
+  --ifm-heading-color: rgba(41, 41, 41, 0.87);
+  --ifm-link-color: #1560BD;
+  --ifm-link-hover-color: #0F4C96;
 
   --ifm-code-font-size: 90%;
-  --ifm-font-family-base: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-  --ifm-font-family-monospace: 'SF Mono', 'Fira Code', 'Fira Mono', 'Roboto Mono', monospace;
-  --ifm-heading-font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --ifm-font-family-base: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --ifm-font-family-monospace: 'Roboto Mono', 'SF Mono', 'Fira Code', monospace;
+  --ifm-heading-font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   --ifm-heading-font-weight: 700;
   --ifm-font-weight-semibold: 600;
 
   --ifm-navbar-background-color: #FFFFFF;
-  --ifm-navbar-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-  --ifm-navbar-link-color: #333333;
-  --ifm-navbar-link-hover-color: #1B4965;
+  --ifm-navbar-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  --ifm-navbar-link-color: rgba(41, 41, 41, 0.87);
+  --ifm-navbar-link-hover-color: #1560BD;
 
-  --ifm-footer-background-color: #0B2545;
-  --ifm-footer-color: #BEE9E8;
-  --ifm-footer-link-color: #CAE9FF;
+  --ifm-footer-background-color: #1560BD;
+  --ifm-footer-color: #FFFFFF;
+  --ifm-footer-link-color: rgba(255, 255, 255, 0.85);
   --ifm-footer-link-hover-color: #FFFFFF;
   --ifm-footer-title-color: #FFFFFF;
 
-  --ifm-toc-border-color: #e2e8f0;
-  --ifm-hr-border-color: #e2e8f0;
+  --ifm-toc-border-color: #E0E0E0;
+  --ifm-hr-border-color: #E0E0E0;
 
-  --ifm-menu-color: #4a5568;
-  --ifm-menu-color-active: #1B4965;
-  --ifm-menu-color-background-active: #EBF5FF;
+  --ifm-menu-color: rgba(41, 41, 41, 0.6);
+  --ifm-menu-color-active: #1560BD;
+  --ifm-menu-color-background-active: #E3F2FD;
 
-  --docusaurus-highlighted-code-line-bg: rgba(27, 73, 101, 0.1);
+  --docusaurus-highlighted-code-line-bg: rgba(21, 96, 189, 0.08);
 }
 
 /* Dark mode */
 [data-theme='dark'] {
-  --ifm-color-primary: #62B6CB;
-  --ifm-color-primary-dark: #4fabc3;
-  --ifm-color-primary-darker: #46a5bf;
-  --ifm-color-primary-darkest: #3591ad;
-  --ifm-color-primary-light: #75c1d3;
-  --ifm-color-primary-lighter: #7ec5d6;
-  --ifm-color-primary-lightest: #99d3e0;
+  --ifm-color-primary: #5B9FE8;
+  --ifm-color-primary-dark: #4390E4;
+  --ifm-color-primary-darker: #3788E2;
+  --ifm-color-primary-darkest: #1D72D6;
+  --ifm-color-primary-light: #73AEEC;
+  --ifm-color-primary-lighter: #7FB4EE;
+  --ifm-color-primary-lightest: #A5CBF3;
 
-  --ifm-background-color: #0f1729;
-  --ifm-background-surface-color: #1a2332;
-  --ifm-font-color-base: #e2e8f0;
-  --ifm-heading-color: #CAE9FF;
-  --ifm-link-color: #62B6CB;
-  --ifm-link-hover-color: #BEE9E8;
+  --ifm-background-color: #121212;
+  --ifm-background-surface-color: #1E1E1E;
+  --ifm-font-color-base: rgba(255, 255, 255, 0.87);
+  --ifm-heading-color: rgba(255, 255, 255, 0.87);
+  --ifm-link-color: #5B9FE8;
+  --ifm-link-hover-color: #A5CBF3;
 
-  --ifm-navbar-background-color: #0B2545;
-  --ifm-navbar-link-color: #e2e8f0;
+  --ifm-navbar-background-color: #1E1E1E;
+  --ifm-navbar-link-color: rgba(255, 255, 255, 0.87);
 
-  --ifm-footer-background-color: #060e1a;
+  --ifm-footer-background-color: #0A3A75;
 
-  --ifm-menu-color: #a0aec0;
-  --ifm-menu-color-active: #62B6CB;
-  --ifm-menu-color-background-active: rgba(98, 182, 203, 0.1);
+  --ifm-menu-color: rgba(255, 255, 255, 0.6);
+  --ifm-menu-color-active: #5B9FE8;
+  --ifm-menu-color-background-active: rgba(91, 159, 232, 0.12);
 
-  --ifm-toc-border-color: #2d3748;
+  --ifm-toc-border-color: rgba(255, 255, 255, 0.12);
 
-  --docusaurus-highlighted-code-line-bg: rgba(98, 182, 203, 0.15);
+  --docusaurus-highlighted-code-line-bg: rgba(91, 159, 232, 0.15);
+
+  --pc-primary: #5B9FE8;
+  --pc-light-blue: rgba(91, 159, 232, 0.12);
+  --pc-surface: #1E1E1E;
+  --pc-text: rgba(255, 255, 255, 0.87);
+  --pc-text-secondary: rgba(255, 255, 255, 0.6);
+  --pc-text-hint: rgba(255, 255, 255, 0.38);
+  --pc-border: rgba(255, 255, 255, 0.12);
 }
 
 /* ==================== */
 /* NAVBAR               */
 /* ==================== */
 .navbar {
-  border-bottom: 1px solid var(--ifm-toc-border-color);
+  border-bottom: 1px solid var(--pc-border);
   padding: 0 1.5rem;
+  background: var(--ifm-navbar-background-color);
 }
 
 .navbar__title {
+  font-family: 'Montserrat', sans-serif;
   font-weight: 700;
   font-size: 1.1rem;
   color: var(--pc-primary);
 }
 
 [data-theme='dark'] .navbar__title {
-  color: var(--pc-secondary);
+  color: var(--pc-primary);
 }
 
 .navbar__logo img {
   height: 32px;
 }
 
+.navbar__items .navbar__link {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+
 /* ==================== */
 /* SIDEBAR              */
 /* ==================== */
 .menu {
+  font-family: 'Roboto', sans-serif;
   font-size: 0.875rem;
   padding: 0.75rem 0.5rem;
+  background: var(--ifm-background-color);
 }
 
 .menu__link {
-  border-radius: 6px;
+  border-radius: 4px;
   padding: 0.4rem 0.75rem;
   font-weight: 400;
   transition: all 0.15s ease;
 }
 
 .menu__link:hover {
-  background-color: rgba(27, 73, 101, 0.05);
+  background-color: var(--pc-light-blue);
+  color: var(--pc-primary);
 }
 
 .menu__link--active {
   font-weight: 600;
-  border-left: 3px solid var(--ifm-color-primary);
-  border-radius: 0 6px 6px 0;
+  color: var(--pc-primary) !important;
+  background-color: var(--pc-light-blue) !important;
+  border-left: 3px solid var(--pc-primary);
+  border-radius: 0 4px 4px 0;
 }
 
 .menu__list-item-collapsible .menu__link {
+  font-family: 'Montserrat', sans-serif;
   font-weight: 600;
   text-transform: uppercase;
-  font-size: 0.75rem;
-  letter-spacing: 0.05em;
-  color: #718096;
+  font-size: 0.7rem;
+  letter-spacing: 0.06em;
+  color: var(--pc-text-hint);
 }
 
 [data-theme='dark'] .menu__list-item-collapsible .menu__link {
-  color: #a0aec0;
+  color: rgba(255, 255, 255, 0.38);
 }
 
 /* ==================== */
 /* CONTENT AREA         */
 /* ==================== */
 .main-wrapper {
+  background-color: #FFFFFF;
+}
+
+[data-theme='dark'] .main-wrapper {
+  background-color: var(--ifm-background-color);
+}
+
+.docMainContainer_node_modules-\@docusaurus-theme-classic-lib-theme-DocPage-Layout-Main-styles-module,
+.docPage_node_modules-\@docusaurus-theme-classic-lib-theme-DocPage-Layout-styles-module,
+[class*="docMainContainer"],
+[class*="docPage"] {
+  background-color: #FFFFFF;
+}
+
+[data-theme='dark'] [class*="docMainContainer"],
+[data-theme='dark'] [class*="docPage"] {
   background-color: var(--ifm-background-color);
 }
 
@@ -157,22 +198,36 @@ article {
 }
 
 article h1 {
+  font-family: 'Montserrat', sans-serif;
   font-size: 2rem;
-  border-bottom: 2px solid var(--pc-accent);
+  font-weight: 700;
+  border-bottom: 3px solid var(--pc-primary);
   padding-bottom: 0.5rem;
   margin-bottom: 1.5rem;
+  color: var(--ifm-heading-color);
 }
 
 article h2 {
+  font-family: 'Montserrat', sans-serif;
   font-size: 1.5rem;
+  font-weight: 700;
   margin-top: 2.5rem;
   color: var(--ifm-heading-color);
 }
 
 article h3 {
-  font-size: 1.2rem;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.15rem;
+  font-weight: 600;
   margin-top: 2rem;
   color: var(--ifm-heading-color);
+}
+
+article p,
+article li {
+  font-family: 'Roboto', sans-serif;
+  color: var(--pc-text);
+  line-height: 1.7;
 }
 
 /* ==================== */
@@ -180,11 +235,11 @@ article h3 {
 /* ==================== */
 .method-badge {
   display: inline-block;
-  padding: 2px 8px;
+  padding: 2px 10px;
   border-radius: 4px;
   font-size: 0.7rem;
   font-weight: 700;
-  font-family: var(--ifm-font-family-monospace);
+  font-family: 'Roboto Mono', monospace;
   text-transform: uppercase;
   letter-spacing: 0.03em;
   line-height: 1.4;
@@ -192,73 +247,77 @@ article h3 {
 }
 
 .method-get {
-  background-color: #dcfce7;
-  color: #166534;
-  border: 1px solid #bbf7d0;
+  background-color: #E8F5E9;
+  color: #2E7D32;
+  border: 1px solid #C8E6C9;
 }
 
 .method-post {
-  background-color: #dbeafe;
-  color: #1e40af;
-  border: 1px solid #bfdbfe;
+  background-color: #E3F2FD;
+  color: #1565C0;
+  border: 1px solid #BBDEFB;
 }
 
 .method-put {
-  background-color: #fef9c3;
-  color: #854d0e;
-  border: 1px solid #fef08a;
+  background-color: #FFF8E1;
+  color: #F57F17;
+  border: 1px solid #FFECB3;
 }
 
 .method-patch {
-  background-color: #ffedd5;
-  color: #9a3412;
-  border: 1px solid #fed7aa;
+  background-color: #FFF3E0;
+  color: #E65100;
+  border: 1px solid #FFE0B2;
 }
 
 .method-delete {
-  background-color: #fee2e2;
-  color: #991b1b;
-  border: 1px solid #fecaca;
+  background-color: #FFEBEE;
+  color: #C62828;
+  border: 1px solid #FFCDD2;
 }
 
 [data-theme='dark'] .method-get {
-  background-color: rgba(22, 101, 52, 0.3);
-  color: #86efac;
-  border-color: rgba(34, 197, 94, 0.3);
+  background-color: rgba(46, 125, 50, 0.2);
+  color: #81C784;
+  border-color: rgba(46, 125, 50, 0.3);
 }
 
 [data-theme='dark'] .method-post {
-  background-color: rgba(30, 64, 175, 0.3);
-  color: #93c5fd;
-  border-color: rgba(59, 130, 246, 0.3);
+  background-color: rgba(21, 101, 192, 0.2);
+  color: #64B5F6;
+  border-color: rgba(21, 101, 192, 0.3);
 }
 
 [data-theme='dark'] .method-put {
-  background-color: rgba(133, 77, 14, 0.3);
-  color: #fde047;
-  border-color: rgba(234, 179, 8, 0.3);
+  background-color: rgba(245, 127, 23, 0.2);
+  color: #FFD54F;
+  border-color: rgba(245, 127, 23, 0.3);
 }
 
 [data-theme='dark'] .method-patch {
-  background-color: rgba(154, 52, 18, 0.3);
-  color: #fdba74;
-  border-color: rgba(249, 115, 22, 0.3);
+  background-color: rgba(230, 81, 0, 0.2);
+  color: #FFB74D;
+  border-color: rgba(230, 81, 0, 0.3);
 }
 
 [data-theme='dark'] .method-delete {
-  background-color: rgba(153, 27, 27, 0.3);
-  color: #fca5a5;
-  border-color: rgba(239, 68, 68, 0.3);
+  background-color: rgba(198, 40, 40, 0.2);
+  color: #EF9A9A;
+  border-color: rgba(198, 40, 40, 0.3);
 }
 
 /* ==================== */
 /* ENDPOINT BLOCKS      */
 /* ==================== */
 .endpoint-block {
-  border: 1px solid var(--ifm-toc-border-color);
-  border-radius: 8px;
+  border: 1px solid var(--pc-border);
+  border-radius: 4px;
   padding: 1.25rem;
   margin: 1.5rem 0;
+  background: #FFFFFF;
+}
+
+[data-theme='dark'] .endpoint-block {
   background: var(--ifm-background-surface-color);
 }
 
@@ -267,7 +326,7 @@ article h3 {
   align-items: center;
   gap: 0.75rem;
   margin-bottom: 0.75rem;
-  font-family: var(--ifm-font-family-monospace);
+  font-family: 'Roboto Mono', monospace;
   font-size: 0.95rem;
 }
 
@@ -283,82 +342,102 @@ table {
   display: table;
   width: 100%;
   border-collapse: collapse;
+  font-family: 'Roboto', sans-serif;
   font-size: 0.875rem;
+  background: #FFFFFF;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+[data-theme='dark'] table {
+  background: var(--ifm-background-surface-color);
 }
 
 table thead tr {
-  background-color: var(--ifm-background-surface-color);
-  border-bottom: 2px solid var(--ifm-toc-border-color);
+  background-color: var(--pc-light-blue);
+  border-bottom: 2px solid var(--pc-border);
+}
+
+[data-theme='dark'] table thead tr {
+  background-color: rgba(91, 159, 232, 0.1);
 }
 
 table th {
+  font-family: 'Montserrat', sans-serif;
   font-weight: 600;
   text-align: left;
   padding: 0.75rem 1rem;
-  color: var(--ifm-heading-color);
-  font-size: 0.8rem;
+  color: var(--pc-primary);
+  font-size: 0.75rem;
   text-transform: uppercase;
-  letter-spacing: 0.03em;
+  letter-spacing: 0.04em;
+}
+
+[data-theme='dark'] table th {
+  color: var(--pc-primary);
 }
 
 table td {
   padding: 0.625rem 1rem;
-  border-bottom: 1px solid var(--ifm-toc-border-color);
+  border-bottom: 1px solid var(--pc-border);
   vertical-align: top;
+  color: var(--pc-text);
 }
 
 table tbody tr:hover {
-  background-color: rgba(27, 73, 101, 0.02);
+  background-color: var(--pc-light-blue);
 }
 
 [data-theme='dark'] table tbody tr:hover {
-  background-color: rgba(98, 182, 203, 0.05);
+  background-color: rgba(91, 159, 232, 0.06);
 }
 
 /* ==================== */
 /* CODE BLOCKS          */
 /* ==================== */
 .prism-code {
-  border-radius: 8px !important;
-  border: 1px solid var(--ifm-toc-border-color) !important;
+  border-radius: 4px !important;
+  border: 1px solid var(--pc-border) !important;
 }
 
 code {
   border-radius: 4px;
   padding: 2px 6px;
   font-size: 0.85em;
-  background-color: rgba(27, 73, 101, 0.06);
-  border: 1px solid rgba(27, 73, 101, 0.1);
+  background-color: var(--pc-light-blue);
+  border: 1px solid rgba(21, 96, 189, 0.15);
   color: var(--pc-primary);
 }
 
 [data-theme='dark'] code {
-  background-color: rgba(98, 182, 203, 0.1);
-  border-color: rgba(98, 182, 203, 0.2);
-  color: var(--pc-secondary);
+  background-color: rgba(91, 159, 232, 0.12);
+  border-color: rgba(91, 159, 232, 0.2);
+  color: var(--pc-primary);
 }
 
 /* ==================== */
 /* ADMONITIONS          */
 /* ==================== */
 .alert {
-  border-radius: 8px;
+  border-radius: 4px;
   border-left-width: 4px;
+  font-family: 'Roboto', sans-serif;
 }
 
 /* ==================== */
 /* BREADCRUMBS          */
 /* ==================== */
 .breadcrumbs__link {
+  font-family: 'Roboto', sans-serif;
   font-size: 0.8rem;
-  color: #718096;
+  color: var(--pc-text-secondary);
 }
 
 /* ==================== */
 /* SEARCH               */
 /* ==================== */
 .DocSearch-Button {
-  border-radius: 8px !important;
+  border-radius: 4px !important;
 }
 
 /* ==================== */
@@ -374,9 +453,30 @@ code {
 }
 
 .endpoint-summary-table td:nth-child(2) {
-  font-family: var(--ifm-font-family-monospace);
+  font-family: 'Roboto Mono', monospace;
   font-size: 0.85rem;
   font-weight: 500;
+}
+
+/* ==================== */
+/* CARDS (light blue)   */
+/* ==================== */
+.card {
+  background: #FFFFFF;
+  border: 1px solid var(--pc-border);
+  border-radius: 4px;
+}
+
+.card:hover {
+  border-color: var(--pc-primary);
+}
+
+/* Info cards — light blue bg like ProConnect site */
+.info-card {
+  background: var(--pc-light-blue);
+  border-radius: 8px;
+  padding: 1.25rem;
+  border: 1px solid rgba(21, 96, 189, 0.12);
 }
 
 /* ==================== */
@@ -392,12 +492,28 @@ code {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #cbd5e0;
+  background: #BDBDBD;
   border-radius: 3px;
 }
 
+::-webkit-scrollbar-thumb:hover {
+  background: #9E9E9E;
+}
+
 [data-theme='dark'] ::-webkit-scrollbar-thumb {
-  background: #4a5568;
+  background: #424242;
+}
+
+/* ==================== */
+/* FOOTER               */
+/* ==================== */
+.footer {
+  font-family: 'Roboto', sans-serif;
+}
+
+.footer__title {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
 }
 
 /* ==================== */
@@ -409,60 +525,102 @@ code {
   }
 }
 
-/* Status code badges */
+/* ==================== */
+/* STATUS CODE BADGES   */
+/* ==================== */
 .status-code {
   display: inline-block;
   padding: 1px 6px;
-  border-radius: 3px;
+  border-radius: 4px;
   font-size: 0.8rem;
   font-weight: 600;
-  font-family: var(--ifm-font-family-monospace);
+  font-family: 'Roboto Mono', monospace;
 }
 
 .status-2xx {
-  background-color: #dcfce7;
-  color: #166534;
+  background-color: #E8F5E9;
+  color: #2E7D32;
 }
 
 .status-4xx {
-  background-color: #ffedd5;
-  color: #9a3412;
+  background-color: #FFF3E0;
+  color: #E65100;
 }
 
 .status-5xx {
-  background-color: #fee2e2;
-  color: #991b1b;
+  background-color: #FFEBEE;
+  color: #C62828;
 }
 
 [data-theme='dark'] .status-2xx {
-  background-color: rgba(22, 101, 52, 0.3);
-  color: #86efac;
+  background-color: rgba(46, 125, 50, 0.2);
+  color: #81C784;
 }
 
 [data-theme='dark'] .status-4xx {
-  background-color: rgba(154, 52, 18, 0.3);
-  color: #fdba74;
+  background-color: rgba(230, 81, 0, 0.2);
+  color: #FFB74D;
 }
 
 [data-theme='dark'] .status-5xx {
-  background-color: rgba(153, 27, 27, 0.3);
-  color: #fca5a5;
+  background-color: rgba(198, 40, 40, 0.2);
+  color: #EF9A9A;
 }
 
-/* Required badge */
+/* ==================== */
+/* REQUIRED BADGE       */
+/* ==================== */
 .required-badge {
   display: inline-block;
-  padding: 0 4px;
+  padding: 0 5px;
   border-radius: 3px;
   font-size: 0.65rem;
   font-weight: 700;
   text-transform: uppercase;
-  background-color: #fee2e2;
-  color: #991b1b;
+  background-color: #FFEBEE;
+  color: #C62828;
   margin-left: 4px;
 }
 
 [data-theme='dark'] .required-badge {
-  background-color: rgba(153, 27, 27, 0.3);
-  color: #fca5a5;
+  background-color: rgba(198, 40, 40, 0.2);
+  color: #EF9A9A;
+}
+
+/* ==================== */
+/* PAGINATION           */
+/* ==================== */
+.pagination-nav__link {
+  border-radius: 4px;
+  border-color: var(--pc-border);
+}
+
+.pagination-nav__link:hover {
+  border-color: var(--pc-primary);
+  background: var(--pc-light-blue);
+}
+
+.pagination-nav__sublabel {
+  font-family: 'Roboto', sans-serif;
+  font-size: 0.75rem;
+  color: var(--pc-text-hint);
+}
+
+.pagination-nav__label {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  color: var(--pc-primary);
+}
+
+/* ==================== */
+/* TABLE OF CONTENTS    */
+/* ==================== */
+.table-of-contents__link {
+  font-family: 'Roboto', sans-serif;
+  font-size: 0.8rem;
+}
+
+.table-of-contents__link--active {
+  color: var(--pc-primary);
+  font-weight: 500;
 }

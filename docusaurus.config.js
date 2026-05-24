@@ -80,18 +80,19 @@ const config = {
             title: 'Resources',
             items: [
               {label: 'OpenAPI Spec', href: 'https://api.proconnectcareer.com/api-json'},
-              {label: 'Status Page', href: 'https://status.proconnectcareer.com'},
+              {label: 'Swagger UI', href: 'https://api.proconnectcareer.com/api'},
             ],
           },
           {
-            title: 'Company',
+            title: 'ProConnect',
             items: [
-              {label: 'ProConnect', href: 'https://proconnectcareer.com'},
+              {label: 'Website', href: 'https://proconnectcareer.com'},
+              {label: 'Open On Web', href: 'https://app.proconnectcareer.com'},
               {label: 'GitHub', href: 'https://github.com/Ogah-Rugi'},
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} ProConnect. Built with Docusaurus.`,
+        copyright: `Copyright © ${new Date().getFullYear()} ProConnect — Empowering Hospitality Careers Across ASEAN.`,
       },
       prism: {
         theme: prismThemes.github,
