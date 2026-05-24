@@ -5,7 +5,14 @@ const {themes: prismThemes} = require('prism-react-renderer');
 const config = {
   title: 'ProConnect API',
   tagline: 'Professional Career Connection Platform - API Documentation',
-  favicon: 'img/favicon.ico',
+  favicon: 'img/favicon.svg',
+  headTags: [
+    {tagName: 'link', attributes: {rel: 'icon', type: 'image/svg+xml', href: '/img/favicon.svg'}},
+    {tagName: 'link', attributes: {rel: 'icon', type: 'image/x-icon', href: '/img/favicon.ico'}},
+    {tagName: 'link', attributes: {rel: 'icon', type: 'image/png', sizes: '32x32', href: '/img/favicon-32x32.png'}},
+    {tagName: 'link', attributes: {rel: 'icon', type: 'image/png', sizes: '192x192', href: '/img/favicon-192x192.png'}},
+    {tagName: 'link', attributes: {rel: 'apple-touch-icon', sizes: '180x180', href: '/img/apple-touch-icon.png'}},
+  ],
   url: 'https://docs.proconnectcareer.com',
   baseUrl: '/',
   organizationName: 'proconnect',
