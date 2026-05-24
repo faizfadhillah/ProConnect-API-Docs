@@ -624,3 +624,143 @@ code {
   color: var(--pc-primary);
   font-weight: 500;
 }
+
+/* ==================== */
+/* NAVBAR WEBSITE LINK  */
+/* ==================== */
+.navbar__link--website {
+  background-color: var(--pc-primary);
+  color: #FFFFFF !important;
+  border-radius: 4px;
+  padding: 6px 16px !important;
+  font-weight: 600;
+  font-size: 0.8rem;
+  transition: background-color 0.2s ease;
+}
+
+.navbar__link--website:hover {
+  background-color: var(--pc-primary-dark);
+  color: #FFFFFF !important;
+}
+
+[data-theme='dark'] .navbar__link--website {
+  background-color: var(--pc-primary);
+}
+
+[data-theme='dark'] .navbar__link--website:hover {
+  background-color: #4390E4;
+}
+
+/* ==================== */
+/* CUSTOM FOOTER        */
+/* (matches proconnectcareer.com) */
+/* ==================== */
+
+/* Hide default Docusaurus footer content */
+.footer .footer__links,
+.footer .footer__bottom {
+  display: none !important;
+}
+
+.footer {
+  padding: 0 !important;
+  background-color: transparent !important;
+}
+
+.pc-footer {
+  background: linear-gradient(135deg, #3563C4 0%, #2952A8 100%);
+  padding: 3.5rem 2rem;
+  font-family: 'Roboto', sans-serif;
+}
+
+.pc-footer__container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.2fr 1fr 1fr;
+  gap: 3rem;
+  align-items: start;
+}
+
+.pc-footer__logo {
+  height: 50px;
+  width: auto;
+}
+
+.pc-footer__tagline {
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 0.95rem;
+  margin: 0.75rem 0 1.25rem;
+  font-weight: 300;
+}
+
+.pc-footer__store-badge img {
+  height: 40px;
+  border-radius: 6px;
+  transition: opacity 0.2s;
+}
+
+.pc-footer__store-badge img:hover {
+  opacity: 0.85;
+}
+
+.pc-footer__heading {
+  font-family: 'Montserrat', sans-serif;
+  color: #FFFFFF;
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin: 0 0 1rem;
+}
+
+.pc-footer__link {
+  display: block;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.9rem;
+  text-decoration: none;
+  margin-bottom: 0.35rem;
+  transition: color 0.15s;
+}
+
+.pc-footer__link:hover {
+  color: #FFFFFF;
+  text-decoration: underline;
+}
+
+.pc-footer__address {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.9rem;
+  line-height: 1.7;
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .pc-footer__container {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    text-align: center;
+  }
+
+  .pc-footer__logo {
+    margin: 0 auto;
+    display: block;
+  }
+}
+
+/* ==================== */
+/* SEARCH BAR STYLING   */
+/* ==================== */
+.navbar .DocSearch-Button,
+.navbar [class*="searchBar"] {
+  border-radius: 4px;
+}
+
+.navbar [class*="searchBar"] input {
+  font-family: 'Roboto', sans-serif;
+  font-size: 0.875rem;
+}
+
+/* Search results highlight */
+.search-result-match {
+  color: var(--pc-primary);
+  font-weight: 600;
+}

@@ -18,6 +18,25 @@ const config = {
     locales: ['en'],
   },
 
+  themes: [
+    [
+      '@easyops-cn/docusaurus-search-local',
+      /** @type {import("@easyops-cn/docusaurus-search-local").PluginOptions} */
+      ({
+        hashed: true,
+        language: ['en'],
+        indexDocs: true,
+        indexBlog: false,
+        indexPages: false,
+        docsRouteBasePath: '/',
+        highlightSearchTermsOnTargetPage: true,
+        searchResultLimits: 12,
+        searchBarShortcutHint: true,
+        searchBarPosition: 'right',
+      }),
+    ],
+  ],
+
   presets: [
     [
       'classic',
@@ -41,10 +60,11 @@ const config = {
     ({
       image: 'img/proconnect-social-card.png',
       navbar: {
-        title: 'ProConnect API',
+        title: '',
         logo: {
           alt: 'ProConnect Logo',
           src: 'img/logo.svg',
+          style: {height: '32px'},
         },
         items: [
           {
@@ -63,36 +83,18 @@ const config = {
             label: 'GitHub',
             position: 'right',
           },
+          {
+            href: 'https://proconnectcareer.com/',
+            label: 'ProConnect Website',
+            position: 'right',
+            className: 'navbar__link--website',
+          },
         ],
       },
       footer: {
         style: 'dark',
-        links: [
-          {
-            title: 'Documentation',
-            items: [
-              {label: 'Getting Started', to: '/'},
-              {label: 'Authentication', to: '/getting-started/authentication'},
-              {label: 'API Reference', to: '/user-management/users'},
-            ],
-          },
-          {
-            title: 'Resources',
-            items: [
-              {label: 'OpenAPI Spec', href: 'https://api.proconnectcareer.com/api-json'},
-              {label: 'Swagger UI', href: 'https://api.proconnectcareer.com/api'},
-            ],
-          },
-          {
-            title: 'ProConnect',
-            items: [
-              {label: 'Website', href: 'https://proconnectcareer.com'},
-              {label: 'Open On Web', href: 'https://app.proconnectcareer.com'},
-              {label: 'GitHub', href: 'https://github.com/Ogah-Rugi'},
-            ],
-          },
-        ],
-        copyright: `Copyright © ${new Date().getFullYear()} ProConnect — Empowering Hospitality Careers Across ASEAN.`,
+        links: [],
+        copyright: ' ',
       },
       prism: {
         theme: prismThemes.github,
@@ -104,7 +106,6 @@ const config = {
         disableSwitch: false,
         respectPrefersColorScheme: true,
       },
-      algolia: undefined,
     }),
 };
 
