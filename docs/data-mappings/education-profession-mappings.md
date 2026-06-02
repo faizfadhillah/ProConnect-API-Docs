@@ -104,7 +104,7 @@ curl -X GET "https://api.proconnectcareer.com/mst-education-profession-mappings/
 | Name | Type | Required | Description |
 |------|------|----------|-------------|
 | `items` | object[] | **Yes** | Array of items |
-| `meta` | object | **Yes** | Pagination metadata |
+| `meta` | Meta | **Yes** | Pagination metadata |
 
 <details>
 <summary>Example Response</summary>
@@ -157,7 +157,7 @@ curl -X GET "https://api.proconnectcareer.com/mst-education-profession-mappings/
 | Name | Type | Required | Description |
 |------|------|----------|-------------|
 | `items` | object[] | **Yes** | Array of items |
-| `meta` | object | **Yes** | Pagination metadata |
+| `meta` | Meta | **Yes** | Pagination metadata |
 
 <details>
 <summary>Example Response</summary>
@@ -277,6 +277,14 @@ curl -X POST "https://api.proconnectcareer.com/mst-education-profession-mappings
 
 **Authentication:** Required (Bearer Token)
 
+#### Request Body
+
+Content-Type: `multipart/form-data`
+
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `file` | string | No | — |
+
 #### Responses
 
 **200** — File processed successfully
@@ -309,7 +317,10 @@ curl -X POST "https://api.proconnectcareer.com/mst-education-profession-mappings
 ```bash
 curl -X POST "https://api.proconnectcareer.com/mst-education-profession-mappings/upload" \
   -H "Authorization: Bearer <token>" \
-  -H "Content-Type: application/json"
+  -H "Content-Type: application/json" \
+  -d '{
+    "file": "string"
+  }'
 ```
 
 ---

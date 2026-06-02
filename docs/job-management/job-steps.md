@@ -51,7 +51,7 @@ Authorization: Bearer <your_access_token>
 | Name | Type | Required | Description |
 |------|------|----------|-------------|
 | `items` | object[] | **Yes** | Array of items |
-| `meta` | object | **Yes** | Pagination metadata |
+| `meta` | Meta | **Yes** | Pagination metadata |
 
 <details>
 <summary>Example Response</summary>
@@ -106,7 +106,7 @@ curl -X GET "https://api.proconnectcareer.com/job-steps/search" \
 | `deletedAtEnd` | query | string | No | — |
 | `page` | query | number | No | — |
 | `limit` | query | number | No | — |
-| `attributes` | query | string | No | — |
+| `attributes` | query | object | No | — |
 
 #### Responses
 
@@ -115,7 +115,7 @@ curl -X GET "https://api.proconnectcareer.com/job-steps/search" \
 | Name | Type | Required | Description |
 |------|------|----------|-------------|
 | `items` | object[] | **Yes** | Array of items |
-| `meta` | object | **Yes** | Pagination metadata |
+| `meta` | Meta | **Yes** | Pagination metadata |
 
 <details>
 <summary>Example Response</summary>
@@ -177,8 +177,8 @@ Content-Type: `application/json`
 | `status` | `string` enum: `PENDING`, `SUBMITTED`, `ACCEPTED`, `REJECTED` | **Yes** | The status of the job step |
 | `notes` | string | **Yes** | Notes for the job step |
 | `attributes` | object | **Yes** | Attributes for the job step in JSON format |
-| `questionnaires` | object[] | **Yes** | — |
-| `applicantJobSteps` | object[] | **Yes** | — |
+| `questionnaires` | Questionnaire[] | **Yes** | — |
+| `applicantJobSteps` | ApplicantJobStep[] | **Yes** | — |
 
 <details>
 <summary>Example Response</summary>
@@ -262,8 +262,8 @@ Content-Type: `application/json`
 | `status` | `string` enum: `PENDING`, `SUBMITTED`, `ACCEPTED`, `REJECTED` | **Yes** | The status of the job step |
 | `notes` | string | **Yes** | Notes for the job step |
 | `attributes` | object | **Yes** | Attributes for the job step in JSON format |
-| `questionnaires` | object[] | **Yes** | — |
-| `applicantJobSteps` | object[] | **Yes** | — |
+| `questionnaires` | Questionnaire[] | **Yes** | — |
+| `applicantJobSteps` | ApplicantJobStep[] | **Yes** | — |
 
 <details>
 <summary>Example Response</summary>

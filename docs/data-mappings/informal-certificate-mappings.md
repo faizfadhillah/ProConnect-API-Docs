@@ -110,7 +110,7 @@ curl -X GET "https://api.proconnectcareer.com/mst-informal-certificate-mappings/
 | Name | Type | Required | Description |
 |------|------|----------|-------------|
 | `items` | object[] | **Yes** | Array of items |
-| `meta` | object | **Yes** | Pagination metadata |
+| `meta` | Meta | **Yes** | Pagination metadata |
 
 <details>
 <summary>Example Response</summary>
@@ -162,8 +162,8 @@ curl -X GET "https://api.proconnectcareer.com/mst-informal-certificate-mappings/
 
 | Name | Type | Required | Description |
 |------|------|----------|-------------|
-| `summary` | object | **Yes** | Summary statistics |
-| `students` | object[] | **Yes** | List of students with licenses |
+| `summary` | LicenseVerificationSummaryDto | **Yes** | Summary statistics |
+| `students` | LicenseVerificationStudentResponseDto[] | **Yes** | List of students with licenses |
 | `meta` | object | **Yes** | Pagination metadata |
 
 <details>
@@ -287,6 +287,14 @@ curl -X POST "https://api.proconnectcareer.com/mst-informal-certificate-mappings
 
 **Authentication:** Required (Bearer Token)
 
+#### Request Body
+
+Content-Type: `multipart/form-data`
+
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `file` | string | No | — |
+
 #### Responses
 
 **200** — File processed successfully
@@ -319,7 +327,10 @@ curl -X POST "https://api.proconnectcareer.com/mst-informal-certificate-mappings
 ```bash
 curl -X POST "https://api.proconnectcareer.com/mst-informal-certificate-mappings/upload" \
   -H "Authorization: Bearer <token>" \
-  -H "Content-Type: application/json"
+  -H "Content-Type: application/json" \
+  -d '{
+    "file": "string"
+  }'
 ```
 
 ---

@@ -66,14 +66,14 @@ Authorization: Bearer <your_access_token>
 | `region_id` | string | **Yes** | ID region |
 | `other_region` | string | No | Region lain (opsional) |
 | `is_verified` | boolean | **Yes** | Status verifikasi perusahaan |
-| `status` | object | **Yes** | — |
+| `status` | CompanyStatus | **Yes** | — |
 | `country_id` | string | No | id from mst_salary_country |
 | `other_country` | string | No | Other Country |
 | `is_outside_indo` | boolean | **Yes** | is outside indo |
 | `use_hq_business_profile` | boolean | **Yes** | Flag is business profile data, inherit from HQ |
-| `departments` | object[] | **Yes** | List of departments assigned to this company |
+| `departments` | MstDepartmentResponseDto[] | **Yes** | List of departments assigned to this company |
 | `available_job_count` | number | No | Count of published jobs for this company when showAvailableJobCount=true |
-| `branches` | object[] | **Yes** | Branches for this company (HQ + branches resolved by company name). Empty for non-HQ companies. |
+| `branches` | CompanyBranchResponseDto[] | **Yes** | Branches for this company (HQ + branches resolved by company name). Empty for non-HQ companies. |
 
 <details>
 <summary>Example Response</summary>

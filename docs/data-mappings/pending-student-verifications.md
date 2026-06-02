@@ -52,7 +52,7 @@ Authorization: Bearer <your_access_token>
 | Name | Type | Required | Description |
 |------|------|----------|-------------|
 | `items` | object[] | **Yes** | Array of items |
-| `meta` | object | **Yes** | Pagination metadata |
+| `meta` | Meta | **Yes** | Pagination metadata |
 
 <details>
 <summary>Example Response</summary>
@@ -190,6 +190,14 @@ curl -X POST "https://api.proconnectcareer.com/pending-student-verifications" \
 
 **Authentication:** Required (Bearer Token)
 
+#### Request Body
+
+Content-Type: `multipart/form-data`
+
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `file` | string | **Yes** | Excel (.xls or .xlsx) file |
+
 #### Responses
 
 **200** — Import result summary
@@ -199,7 +207,10 @@ curl -X POST "https://api.proconnectcareer.com/pending-student-verifications" \
 ```bash
 curl -X POST "https://api.proconnectcareer.com/pending-student-verifications/import" \
   -H "Authorization: Bearer <token>" \
-  -H "Content-Type: application/json"
+  -H "Content-Type: application/json" \
+  -d '{
+    "file": "<file>"
+  }'
 ```
 
 ---

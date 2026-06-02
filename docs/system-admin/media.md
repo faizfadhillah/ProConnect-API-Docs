@@ -56,6 +56,15 @@ curl -X GET "https://api.proconnectcareer.com/media/{category}/{mediaId}" \
 
 **Authentication:** Required (Bearer Token)
 
+#### Request Body
+
+Content-Type: `multipart/form-data`
+
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `file` | string | No | — |
+| `category` | string | No | Category of the media file as subpath or folder |
+
 #### Responses
 
 **201** — Success
@@ -65,7 +74,11 @@ curl -X GET "https://api.proconnectcareer.com/media/{category}/{mediaId}" \
 ```bash
 curl -X POST "https://api.proconnectcareer.com/media" \
   -H "Authorization: Bearer <token>" \
-  -H "Content-Type: application/json"
+  -H "Content-Type: application/json" \
+  -d '{
+    "file": "string",
+    "category": "<category>"
+  }'
 ```
 
 ---

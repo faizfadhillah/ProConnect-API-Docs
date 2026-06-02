@@ -281,6 +281,110 @@ function generateTagPage(tag, endpoints, meta) {
 // Main
 // ============================================================
 
+// ============================================================
+// OpenAPI (paths) -> endpoints transformer + $ref resolver
+// (live spec at /api-json is standard OpenAPI 3.0 with `paths`)
+// ============================================================
+function getRef(spec, ref) {
+  const parts = ref.replace(/^#\//, '').split('/');
+  let cur = spec;
+  for (const p of parts) cur = cur && cur[decodeURIComponent(p)];
+  return cur;
+}
+
+function resolveSchema(spec, schema, seen, depth) {
+  seen = seen || new Set();
+  depth = depth || 0;
+  if (!schema || depth > 6) return schema || {};
+  if (schema.$ref) {
+    if (seen.has(schema.$ref)) return { type: schema.$ref.split('/').pop() };
+    const s2 = new Set(seen); s2.add(schema.$ref);
+    return resolveSchema(spec, getRef(spec, schema.$ref), s2, depth + 1);
+  }
+  if (schema.allOf) {
+    const merged = { type: 'object', properties: {}, required: [] };
+    for (const sub of schema.allOf) {
+      const rs = resolveSchema(spec, sub, seen, depth + 1);
+      Object.assign(merged.properties, rs.properties || {});
+      if (Array.isArray(rs.required)) merged.required.push(...rs.required);
+    }
+    if (schema.properties) Object.assign(merged.properties, schema.properties);
+    if (Array.isArray(schema.required)) merged.required.push(...schema.required);
+    return merged;
+  }
+  return schema;
+}
+
+function simplifyProp(spec, prop) {
+  if (!prop) return { type: 'object' };
+  if (prop.$ref) return { type: prop.$ref.split('/').pop(), description: prop.description };
+  if (prop.allOf && prop.allOf[0] && prop.allOf[0].$ref)
+    return { type: prop.allOf[0].$ref.split('/').pop(), description: prop.description };
+  if (prop.type === 'array' && prop.items) {
+    let it = 'object';
+    if (prop.items.$ref) it = prop.items.$ref.split('/').pop();
+    else if (prop.items.type) it = prop.items.type;
+    return { type: 'array', items: { type: it }, enum: prop.enum, description: prop.description };
+  }
+  return prop;
+}
+
+function resolveProps(spec, schema) {
+  const resolved = resolveSchema(spec, schema, new Set(), 0);
+  if (!resolved || !resolved.properties) return resolved || {};
+  const out = { type: resolved.type || 'object', required: resolved.required || [], properties: {} };
+  for (const [k, v] of Object.entries(resolved.properties)) out.properties[k] = simplifyProp(spec, v);
+  return out;
+}
+
+function buildEndpoints(spec) {
+  const out = [];
+  const METHODS = ['get', 'post', 'put', 'patch', 'delete'];
+  for (const [routePath, item] of Object.entries(spec.paths || {})) {
+    if (!item) continue;
+    for (const method of METHODS) {
+      const op = item[method];
+      if (!op) continue;
+      const rawParams = [...(item.parameters || []), ...(op.parameters || [])];
+      const parameters = rawParams
+        .map(p => (p && p.$ref ? getRef(spec, p.$ref) : p))
+        .filter(Boolean)
+        .map(p => ({ ...p, schema: p.schema ? simplifyProp(spec, p.schema) : undefined }));
+
+      let requestBody = null;
+      let rb = op.requestBody;
+      if (rb && rb.$ref) rb = getRef(spec, rb.$ref);
+      if (rb && rb.content) {
+        requestBody = {};
+        for (const [ct, media] of Object.entries(rb.content))
+          requestBody[ct] = { resolved: resolveProps(spec, media.schema) };
+      }
+
+      const responses = {};
+      for (const [code, resp0] of Object.entries(op.responses || {})) {
+        let resp = resp0;
+        if (resp && resp.$ref) resp = getRef(spec, resp.$ref);
+        const entry = { description: (resp && resp.description) || '' };
+        if (resp && resp.content) {
+          entry.content = {};
+          for (const [ct, media] of Object.entries(resp.content))
+            entry.content[ct] = { resolved: resolveProps(spec, media.schema) };
+        }
+        responses[code] = entry;
+      }
+
+      out.push({
+        method, path: routePath,
+        summary: op.summary || '', description: op.description || '',
+        operationId: op.operationId || '',
+        tags: op.tags || ['untagged'],
+        parameters, requestBody, responses,
+      });
+    }
+  }
+  return out;
+}
+
 async function main() {
   let spec;
 
@@ -311,9 +415,11 @@ async function main() {
     }
   }
 
-  // Group endpoints by tag
+  // Group endpoints by tag (built from OpenAPI `paths`)
   const endpointsByTag = {};
-  for (const ep of spec.endpoints || []) {
+  const allEndpoints = buildEndpoints(spec);
+  console.log(`Parsed ${allEndpoints.length} operations from ${Object.keys(spec.paths || {}).length} paths.`);
+  for (const ep of allEndpoints) {
     for (const tag of ep.tags || ['untagged']) {
       if (!endpointsByTag[tag]) endpointsByTag[tag] = [];
       endpointsByTag[tag].push(ep);

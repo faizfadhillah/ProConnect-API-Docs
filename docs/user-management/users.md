@@ -102,18 +102,18 @@ curl -X GET "https://api.proconnectcareer.com/users" \
 | `is_skill_passport_verified` | boolean | **Yes** | status skill passport verified |
 | `active_auth_session_id` | string | **Yes** | Current active auth session id |
 | `active_auth_session_issued_at` | string | **Yes** | Current active auth session issued-at timestamp |
-| `userSubscriptions` | object[] | **Yes** | — |
-| `userSkills` | object[] | **Yes** | — |
-| `userSkillPassports` | object[] | **Yes** | — |
-| `userSalaryCountries` | object[] | **Yes** | — |
-| `userRightToWorks` | object[] | **Yes** | — |
-| `userProfessions` | object[] | **Yes** | — |
-| `userLanguages` | object[] | **Yes** | — |
-| `userInterests` | object[] | **Yes** | — |
-| `userFiles` | object[] | **Yes** | — |
-| `userEducations` | object[] | **Yes** | — |
-| `userCertificates` | object[] | **Yes** | — |
-| `userCareerHistories` | object[] | **Yes** | — |
+| `userSubscriptions` | UserSubscription[] | **Yes** | — |
+| `userSkills` | UserSkill[] | **Yes** | — |
+| `userSkillPassports` | UserSkillPassport[] | **Yes** | — |
+| `userSalaryCountries` | UserSalaryCountry[] | **Yes** | — |
+| `userRightToWorks` | UserRightToWork[] | **Yes** | — |
+| `userProfessions` | UserProfession[] | **Yes** | — |
+| `userLanguages` | UserLanguage[] | **Yes** | — |
+| `userInterests` | UserInterest[] | **Yes** | — |
+| `userFiles` | UserFile[] | **Yes** | — |
+| `userEducations` | UserEducation[] | **Yes** | — |
+| `userCertificates` | UserCertificate[] | **Yes** | — |
+| `userCareerHistories` | UserCareerHistory[] | **Yes** | — |
 
 <details>
 <summary>Example Response</summary>
@@ -260,24 +260,24 @@ curl -X GET "https://api.proconnectcareer.com/users/eligible-to-send-otp" \
 | `is_skill_passport_verified` | boolean | **Yes** | status skill passport verified |
 | `active_auth_session_id` | string | **Yes** | Current active auth session id |
 | `active_auth_session_issued_at` | string | **Yes** | Current active auth session issued-at timestamp |
-| `userSubscriptions` | object[] | **Yes** | — |
-| `userSkills` | object[] | **Yes** | — |
-| `userSkillPassports` | object[] | **Yes** | — |
-| `userSalaryCountries` | object[] | **Yes** | — |
-| `userRightToWorks` | object[] | **Yes** | — |
-| `userProfessions` | object[] | **Yes** | — |
-| `userLanguages` | object[] | **Yes** | — |
-| `userInterests` | object[] | **Yes** | — |
-| `userFiles` | object[] | **Yes** | — |
-| `userEducations` | object[] | **Yes** | — |
-| `userCertificates` | object[] | **Yes** | — |
-| `userCareerHistories` | object[] | **Yes** | — |
+| `userSubscriptions` | UserSubscription[] | **Yes** | — |
+| `userSkills` | UserSkill[] | **Yes** | — |
+| `userSkillPassports` | UserSkillPassport[] | **Yes** | — |
+| `userSalaryCountries` | UserSalaryCountry[] | **Yes** | — |
+| `userRightToWorks` | UserRightToWork[] | **Yes** | — |
+| `userProfessions` | UserProfession[] | **Yes** | — |
+| `userLanguages` | UserLanguage[] | **Yes** | — |
+| `userInterests` | UserInterest[] | **Yes** | — |
+| `userFiles` | UserFile[] | **Yes** | — |
+| `userEducations` | UserEducation[] | **Yes** | — |
+| `userCertificates` | UserCertificate[] | **Yes** | — |
+| `userCareerHistories` | UserCareerHistory[] | **Yes** | — |
 | `phone` | string | No | Decrypted full phone number (may be null if not set) |
-| `roles` | object[] | **Yes** | User roles with permissions for the active session; null when no account is selected |
+| `roles` | RoleDto[] | **Yes** | User roles with permissions for the active session; null when no account is selected |
 | `wizard_state` | object | **Yes** | Wizard state for active session scope |
 | `last_wizard_state` | number | **Yes** | Last wizard state index for active session scope |
 | `owner_employer_onboarding_complete` | boolean | **Yes** | Employer + HQ active session only: whether the company owner's employer onboarding is complete (wizard step 99). Always true when you are OWNER_HQ for that HQ. Null when not applicable (e.g. candidate session or draft employer). |
-| `accounts` | object[] | **Yes** | All scoped accounts owned by this user (includes wizard_state, last_wizard_state, picture_url, company_name, brand_name for display) |
+| `accounts` | UserMeAccountDto[] | **Yes** | All scoped accounts owned by this user (includes wizard_state, last_wizard_state, picture_url, company_name, brand_name for display) |
 
 <details>
 <summary>Example Response</summary>
@@ -374,7 +374,7 @@ curl -X GET "https://api.proconnectcareer.com/users/me" \
 | Name | Type | Required | Description |
 |------|------|----------|-------------|
 | `items` | object[] | **Yes** | Array of items |
-| `meta` | object | **Yes** | Pagination metadata |
+| `meta` | Meta | **Yes** | Pagination metadata |
 
 <details>
 <summary>Example Response</summary>
@@ -452,18 +452,18 @@ Content-Type: `application/json`
 | `is_skill_passport_verified` | boolean | **Yes** | status skill passport verified |
 | `active_auth_session_id` | string | **Yes** | Current active auth session id |
 | `active_auth_session_issued_at` | string | **Yes** | Current active auth session issued-at timestamp |
-| `userSubscriptions` | object[] | **Yes** | — |
-| `userSkills` | object[] | **Yes** | — |
-| `userSkillPassports` | object[] | **Yes** | — |
-| `userSalaryCountries` | object[] | **Yes** | — |
-| `userRightToWorks` | object[] | **Yes** | — |
-| `userProfessions` | object[] | **Yes** | — |
-| `userLanguages` | object[] | **Yes** | — |
-| `userInterests` | object[] | **Yes** | — |
-| `userFiles` | object[] | **Yes** | — |
-| `userEducations` | object[] | **Yes** | — |
-| `userCertificates` | object[] | **Yes** | — |
-| `userCareerHistories` | object[] | **Yes** | — |
+| `userSubscriptions` | UserSubscription[] | **Yes** | — |
+| `userSkills` | UserSkill[] | **Yes** | — |
+| `userSkillPassports` | UserSkillPassport[] | **Yes** | — |
+| `userSalaryCountries` | UserSalaryCountry[] | **Yes** | — |
+| `userRightToWorks` | UserRightToWork[] | **Yes** | — |
+| `userProfessions` | UserProfession[] | **Yes** | — |
+| `userLanguages` | UserLanguage[] | **Yes** | — |
+| `userInterests` | UserInterest[] | **Yes** | — |
+| `userFiles` | UserFile[] | **Yes** | — |
+| `userEducations` | UserEducation[] | **Yes** | — |
+| `userCertificates` | UserCertificate[] | **Yes** | — |
+| `userCareerHistories` | UserCareerHistory[] | **Yes** | — |
 
 <details>
 <summary>Example Response</summary>
@@ -562,7 +562,7 @@ Content-Type: `application/json`
 | `error` | string | **Yes** | Error summary if request failed |
 | `error_code` | string | **Yes** | Machine-readable error code for FE logic branching |
 | `traceId` | string | **Yes** | Optional request trace identifier |
-| `data` | object | **Yes** | Response payload |
+| `data` | CreateAdminAccountResponseDto | **Yes** | Response payload |
 
 <details>
 <summary>Example Response</summary>
@@ -639,6 +639,14 @@ curl -X POST "https://api.proconnectcareer.com/users/change-password" \
 
 **Authentication:** Required (Bearer Token)
 
+#### Request Body
+
+Content-Type: `application/json`
+
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `email` | string | No | The email |
+
 #### Responses
 
 **200** — Password reset link has been sent
@@ -652,7 +660,10 @@ curl -X POST "https://api.proconnectcareer.com/users/change-password" \
 ```bash
 curl -X POST "https://api.proconnectcareer.com/users/forgot-password" \
   -H "Authorization: Bearer <token>" \
-  -H "Content-Type: application/json"
+  -H "Content-Type: application/json" \
+  -d '{
+    "email": "<email>"
+  }'
 ```
 
 ---
@@ -784,6 +795,15 @@ curl -X POST "https://api.proconnectcareer.com/users/send-otp" \
 
 **Authentication:** Required (Bearer Token)
 
+#### Request Body
+
+Content-Type: `application/json`
+
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `otp` | string | No | The OTP code sent to the user's email or phone |
+| `type` | `string` enum: `email`, `sms` | No | Channel: email or sms. Default email. |
+
 #### Responses
 
 **200** — OTP verified successfully
@@ -795,7 +815,11 @@ curl -X POST "https://api.proconnectcareer.com/users/send-otp" \
 ```bash
 curl -X POST "https://api.proconnectcareer.com/users/verify-otp" \
   -H "Authorization: Bearer <token>" \
-  -H "Content-Type: application/json"
+  -H "Content-Type: application/json" \
+  -d '{
+    "otp": "<otp>",
+    "type": "email"
+  }'
 ```
 
 ---
@@ -869,18 +893,18 @@ Content-Type: `application/json`
 | `is_skill_passport_verified` | boolean | **Yes** | status skill passport verified |
 | `active_auth_session_id` | string | **Yes** | Current active auth session id |
 | `active_auth_session_issued_at` | string | **Yes** | Current active auth session issued-at timestamp |
-| `userSubscriptions` | object[] | **Yes** | — |
-| `userSkills` | object[] | **Yes** | — |
-| `userSkillPassports` | object[] | **Yes** | — |
-| `userSalaryCountries` | object[] | **Yes** | — |
-| `userRightToWorks` | object[] | **Yes** | — |
-| `userProfessions` | object[] | **Yes** | — |
-| `userLanguages` | object[] | **Yes** | — |
-| `userInterests` | object[] | **Yes** | — |
-| `userFiles` | object[] | **Yes** | — |
-| `userEducations` | object[] | **Yes** | — |
-| `userCertificates` | object[] | **Yes** | — |
-| `userCareerHistories` | object[] | **Yes** | — |
+| `userSubscriptions` | UserSubscription[] | **Yes** | — |
+| `userSkills` | UserSkill[] | **Yes** | — |
+| `userSkillPassports` | UserSkillPassport[] | **Yes** | — |
+| `userSalaryCountries` | UserSalaryCountry[] | **Yes** | — |
+| `userRightToWorks` | UserRightToWork[] | **Yes** | — |
+| `userProfessions` | UserProfession[] | **Yes** | — |
+| `userLanguages` | UserLanguage[] | **Yes** | — |
+| `userInterests` | UserInterest[] | **Yes** | — |
+| `userFiles` | UserFile[] | **Yes** | — |
+| `userEducations` | UserEducation[] | **Yes** | — |
+| `userCertificates` | UserCertificate[] | **Yes** | — |
+| `userCareerHistories` | UserCareerHistory[] | **Yes** | — |
 
 <details>
 <summary>Example Response</summary>

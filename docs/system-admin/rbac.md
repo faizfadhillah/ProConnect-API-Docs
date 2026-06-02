@@ -104,7 +104,7 @@ curl -X GET "https://api.proconnectcareer.com/rbac/all-routes" \
 | Name | Type | Required | Description |
 |------|------|----------|-------------|
 | `items` | object[] | **Yes** | Array of items |
-| `meta` | object | **Yes** | Pagination metadata |
+| `meta` | Meta | **Yes** | Pagination metadata |
 
 <details>
 <summary>Example Response</summary>
@@ -151,6 +151,27 @@ Public endpoint to test if a specific path and method would be allowed for a use
 #### Responses
 
 **200** — Returns route matching test results
+
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `allowed` | boolean | No | Whether the route is allowed |
+| `userRoles` | string[] | No | List of user roles (company roles and regular roles) |
+| `permissions` | string[] | No | List of permissions the user has |
+| `matchingRoutes` | object[] | No | List of routes that match the requested path and method |
+
+<details>
+<summary>Example Response</summary>
+
+```json
+{
+  "allowed": true,
+  "userRoles": [],
+  "permissions": [],
+  "matchingRoutes": []
+}
+```
+
+</details>
 
 **400** — Bad request - missing required parameters
 
@@ -311,6 +332,27 @@ Executes RBAC seeding logic similar to migration. Checks for existing entries be
 #### Responses
 
 **201** — RBAC seeding completed successfully.
+
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `inserted` | number | No | Number of entries inserted |
+| `skipped` | number | No | Number of entries skipped (already exists) |
+| `total` | number | No | Total number of entries processed |
+| `details` | object[] | No | — |
+
+<details>
+<summary>Example Response</summary>
+
+```json
+{
+  "inserted": 0,
+  "skipped": 0,
+  "total": 0,
+  "details": []
+}
+```
+
+</details>
 
 **400** — Bad request.
 
