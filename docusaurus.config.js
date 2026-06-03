@@ -80,6 +80,7 @@ const config = {
             sidebarId: 'apiSidebar',
             position: 'left',
             label: 'Developer Docs',
+            className: 'navbar__link--docs',
           },
           {
             href: 'https://proconnectcareer.com/',

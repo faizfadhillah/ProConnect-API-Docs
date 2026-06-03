@@ -1296,42 +1296,33 @@ code {
   font-weight: 600;
 }
 
+
 /* ============================================= */
-/* NAVBAR — CENTERED SEARCH + MOBILE TIDY-UP     */
+/* NAVBAR - DESIGN ALIGNMENT                      */
+/* logo | divider | Developer Docs ... search . website */
 /* ============================================= */
 
-/* Center the search bar within the navbar (desktop) */
-@media (min-width: 997px) {
-  .navbar__inner { position: relative; }
-  .navbar [class*="searchBar"] {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 360px;
-    max-width: 42vw;
-  }
-  .navbar [class*="searchBar"] input { width: 100%; }
+/* Vertical divider + muted label on the Developer Docs item (matches design) */
+.navbar__link--docs {
+  border-left: 1px solid var(--pc-border);
+  margin-left: 0.5rem;
+  padding-left: 1rem;
+  color: var(--pc-text-secondary);
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
 }
+.navbar__link--docs:hover { color: var(--pc-primary); }
 
-/* Mobile: keep navbar clean — logo + compact search + menu toggle */
+/* Search bar sits on the right, just before the website button (per design) */
+.navbar [class*="searchBar"] { margin-right: 0.75rem; }
+
+/* Mobile: compact, drop the divider, no overflow */
 @media (max-width: 996px) {
   .navbar { padding: 0 0.75rem; }
-  .navbar__inner { flex-wrap: nowrap; }
-  .navbar [class*="searchBar"] {
-    position: static;
-    transform: none;
-    width: auto;
-    margin: 0 0.25rem;
-  }
-  .navbar [class*="searchBar"] input {
-    width: 100%;
-    max-width: 170px;
-    font-size: 16px; /* prevents iOS zoom on focus */
-  }
-  /* tighten the right-hand group so nothing overflows */
+  .navbar__link--docs { border-left: none; margin-left: 0; padding-left: 0.5rem; }
+  .navbar [class*="searchBar"] input { max-width: 170px; font-size: 16px; }
   .navbar__items--right { gap: 0.25rem; }
 }
-
 @media (max-width: 480px) {
   .navbar [class*="searchBar"] input { max-width: 120px; }
 }
