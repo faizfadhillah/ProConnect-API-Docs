@@ -1,19 +1,27 @@
 import React from 'react';
+import useBaseUrl from '@docusaurus/useBaseUrl';
 
 function Footer() {
+  const logoWhite = useBaseUrl('/img/logo-white.svg');
   return (
     <footer className="pc-footer">
       <div className="pc-footer__container">
-        {/* Left column — Logo + tagline + Google Play */}
+        {/* Left column — Logo + tagline + CTA + Google Play */}
         <div className="pc-footer__brand">
           <div className="pc-footer__logo-row">
-            <img
-              src="/img/logo-white.svg"
-              alt="ProConnect"
-              className="pc-footer__logo"
-            />
+            <img src={logoWhite} alt="ProConnect" className="pc-footer__logo" />
           </div>
           <p className="pc-footer__tagline">Connecting employers &amp; candidates</p>
+          <div>
+            <a
+              href="https://proconnectcareer.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="pc-footer__cta"
+            >
+              Visit ProConnectCareer.com
+            </a>
+          </div>
           <a
             href="https://play.google.com/store/apps/details?id=com.proconnect"
             target="_blank"

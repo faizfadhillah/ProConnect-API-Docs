@@ -1328,3 +1328,26 @@ code {
 @media (max-width: 480px) {
   .navbar [class*="searchBar"] input { max-width: 120px; }
 }
+
+/* ── FOOTER CTA BUTTON ── */
+.pc-footer__cta {
+  display: inline-block;
+  background: #FFFFFF;
+  color: #1560BD !important;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 10px 22px;
+  border-radius: 8px;
+  margin: 0.25rem 0 1.25rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.18);
+  transition: background 0.15s ease, transform 0.15s ease;
+}
+.pc-footer__cta:hover {
+  background: #E3F2FD;
+  color: #0F4C96 !important;
+  text-decoration: none;
+  transform: translateY(-1px);
+}
