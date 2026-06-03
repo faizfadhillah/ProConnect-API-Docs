@@ -1313,8 +1313,10 @@ code {
 }
 .navbar__link--docs:hover { color: var(--pc-primary); }
 
-/* Search bar sits on the right, just before the website button (per design) */
-.navbar [class*="searchBar"] { margin-right: 0.75rem; }
+/* Right group order: search FIRST, website button LAST (per design) */
+.navbar__items--right { display: flex; align-items: center; gap: 0.75rem; }
+.navbar__items--right [class*="navbarSearchContainer"] { order: 1; }
+.navbar__link--website { order: 2; }
 
 /* Mobile: compact, drop the divider, no overflow */
 @media (max-width: 996px) {
