@@ -82,16 +82,6 @@ const config = {
             label: 'Developer Docs',
           },
           {
-            href: 'https://api.proconnectcareer.com/api-json',
-            label: 'OpenAPI Spec',
-            position: 'right',
-          },
-          {
-            href: 'https://github.com/Ogah-Rugi/ProConnect-CMS',
-            label: 'GitHub',
-            position: 'right',
-          },
-          {
             href: 'https://proconnectcareer.com/',
             label: 'ProConnect Website',
             position: 'right',
@@ -111,8 +101,8 @@ const config = {
       },
       colorMode: {
         defaultMode: 'light',
-        disableSwitch: false,
-        respectPrefersColorScheme: true,
+        disableSwitch: true,
+        respectPrefersColorScheme: false,
       },
     }),
 };
