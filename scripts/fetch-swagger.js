@@ -123,9 +123,18 @@ function methodBadge(method) {
   return `<span class="method-badge method-${m.toLowerCase()}">${m}</span>`;
 }
 
+function mdxSafe(s) {
+  if (s == null) return '';
+  return String(s)
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/\{/g, '&#123;')
+    .replace(/\}/g, '&#125;');
+}
+
 function escPipe(s) {
   if (!s) return '';
-  return String(s).replace(/\|/g, '\\|').replace(/\n/g, ' ');
+  return mdxSafe(String(s).replace(/\|/g, '\\|').replace(/\n/g, ' '));
 }
 
 function renderType(prop) {
@@ -182,8 +191,8 @@ function generateEndpointSection(ep, index) {
   let md = '';
 
   md += `### ${methodBadge(method)} \`${ep.path}\`\n\n`;
-  md += `**${ep.summary || ep.operationId || 'No summary'}**\n\n`;
-  if (ep.description) md += `${ep.description}\n\n`;
+  md += `**${mdxSafe(ep.summary || ep.operationId || 'No summary')}**\n\n`;
+  if (ep.description) md += `${mdxSafe(ep.description)}\n\n`;
 
   // Auth
   md += `**Authentication:** Required (Bearer Token)\n\n`;

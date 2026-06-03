@@ -325,7 +325,7 @@ curl -X GET "https://api.proconnectcareer.com/jobs/trigger-auto-close" \
 
 **Trigger auto-publish (superadmin only)**
 
-Runs the same logic as the daily cron: publish jobs with open_date <= today 00:00 GMT+7.
+Runs the same logic as the daily cron: publish jobs with open_date &lt;= today 00:00 GMT+7.
 
 **Authentication:** Required (Bearer Token)
 
