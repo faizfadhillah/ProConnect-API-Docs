@@ -12,28 +12,28 @@ function Footer() {
             <img src={logoWhite} alt="ProConnect" className="pc-footer__logo" />
           </div>
           <p className="pc-footer__tagline">Connecting employers &amp; candidates</p>
-          <div>
+          <div className="pc-footer__actions">
             <a
               href="https://proconnectcareer.com/"
               target="_blank"
               rel="noopener noreferrer"
               className="pc-footer__cta"
             >
-              Visit ProConnectCareer.com
+              Open Website
+            </a>
+            <a
+              href="https://play.google.com/store/apps/details?id=com.proconnectjob"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="pc-footer__store-badge"
+            >
+              <img
+                src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg"
+                alt="Get it on Google Play"
+                height="40"
+              />
             </a>
           </div>
-          <a
-            href="https://play.google.com/store/apps/details?id=com.proconnect"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="pc-footer__store-badge"
-          >
-            <img
-              src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg"
-              alt="Get it on Google Play"
-              height="40"
-            />
-          </a>
         </div>
 
         {/* Middle column — Contact */}

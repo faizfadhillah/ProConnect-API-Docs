@@ -1341,7 +1341,7 @@ code {
   letter-spacing: 0.04em;
   padding: 10px 22px;
   border-radius: 8px;
-  margin: 0.25rem 0 1.25rem;
+  margin: 0;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.18);
   transition: background 0.15s ease, transform 0.15s ease;
 }
@@ -1350,4 +1350,19 @@ code {
   color: #0F4C96 !important;
   text-decoration: none;
   transform: translateY(-1px);
+}
+
+
+/* Footer actions: Open Website + Google Play side by side */
+.pc-footer__actions {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  flex-wrap: wrap;
+  margin-top: 0.85rem;
+}
+.pc-footer__actions .pc-footer__store-badge { display: inline-flex; }
+.pc-footer__actions .pc-footer__store-badge img { display: block; }
+@media (max-width: 768px) {
+  .pc-footer__actions { justify-content: center; }
 }
