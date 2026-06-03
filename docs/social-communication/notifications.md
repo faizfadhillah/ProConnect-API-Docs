@@ -101,7 +101,7 @@ Mendapatkan list email yang terdaftar di Firebase Auth tetapi tidak ada di siste
 
 | Name | Type | Required | Description |
 |------|------|----------|-------------|
-| `orphanEmails` | object[] | **Yes** | List of orphan emails |
+| `orphanEmails` | OrphanEmailDto[] | **Yes** | List of orphan emails |
 | `totalOrphans` | number | **Yes** | Total number of orphan emails found |
 | `totalFirebaseUsers` | number | **Yes** | Total number of users in Firebase Auth |
 | `totalSystemUsers` | number | **Yes** | Total number of users in system database |
@@ -213,6 +213,14 @@ Membuat multiple Firebase Auth users sekaligus untuk users yang ada di database 
 
 **Authentication:** Required (Bearer Token)
 
+#### Request Body
+
+Content-Type: `application/json`
+
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `userIds` | string[] | **Yes** | Array of user IDs to create Firebase users for |
+
 #### Responses
 
 **200** — Bulk creation completed
@@ -241,7 +249,10 @@ Membuat multiple Firebase Auth users sekaligus untuk users yang ada di database 
 ```bash
 curl -X POST "https://api.proconnectcareer.com/firebase/orphan-users/bulk-create-firebase-users" \
   -H "Authorization: Bearer <token>" \
-  -H "Content-Type: application/json"
+  -H "Content-Type: application/json" \
+  -d '{
+    "userIds": []
+  }'
 ```
 
 ---
@@ -278,6 +289,14 @@ curl -X POST "https://api.proconnectcareer.com/firebase/read-notification/{id}" 
 
 **Authentication:** Required (Bearer Token)
 
+#### Request Body
+
+Content-Type: `application/json`
+
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `token` | string | No | The fcm token to the user's email |
+
 #### Responses
 
 **200** — FCM Token saved successfully
@@ -289,7 +308,10 @@ curl -X POST "https://api.proconnectcareer.com/firebase/read-notification/{id}" 
 ```bash
 curl -X POST "https://api.proconnectcareer.com/firebase/save-token" \
   -H "Authorization: Bearer <token>" \
-  -H "Content-Type: application/json"
+  -H "Content-Type: application/json" \
+  -d '{
+    "token": "<token>"
+  }'
 ```
 
 ---
@@ -408,6 +430,14 @@ Menghapus multiple Firebase users sekaligus berdasarkan array UIDs.
 
 **Authentication:** Required (Bearer Token)
 
+#### Request Body
+
+Content-Type: `application/json`
+
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `uids` | string[] | **Yes** | Array of Firebase UIDs to delete |
+
 #### Responses
 
 **200** — Bulk deletion completed
@@ -436,7 +466,10 @@ Menghapus multiple Firebase users sekaligus berdasarkan array UIDs.
 ```bash
 curl -X DELETE "https://api.proconnectcareer.com/firebase/orphan-users/bulk" \
   -H "Authorization: Bearer <token>" \
-  -H "Content-Type: application/json"
+  -H "Content-Type: application/json" \
+  -d '{
+    "uids": []
+  }'
 ```
 
 ---

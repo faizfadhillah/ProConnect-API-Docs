@@ -88,7 +88,7 @@ curl -X GET "https://api.proconnectcareer.com/encrypted-user-data/{user_id}" \
 | `limit` | query | number | No | — |
 | `expands` | query | string | No | — |
 | `filters` | query | object | No | Dynamic filters for searching |
-| `isExcel` | query | string | No | — |
+| `isExcel` | query | object | No | — |
 | `sortBy` | query | object | No | Dynamic sorting |
 
 #### Responses
@@ -98,7 +98,7 @@ curl -X GET "https://api.proconnectcareer.com/encrypted-user-data/{user_id}" \
 | Name | Type | Required | Description |
 |------|------|----------|-------------|
 | `items` | object[] | **Yes** | Array of items |
-| `meta` | object | **Yes** | Pagination metadata |
+| `meta` | Meta | **Yes** | Pagination metadata |
 
 <details>
 <summary>Example Response</summary>

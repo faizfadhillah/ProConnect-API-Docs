@@ -86,7 +86,7 @@ Get educations filtered by approval state(s). Filters out educations from soft-d
 | Name | Type | Required | Description |
 |------|------|----------|-------------|
 | `items` | object[] | **Yes** | Array of items |
-| `meta` | object | **Yes** | Pagination metadata |
+| `meta` | Meta | **Yes** | Pagination metadata |
 
 <details>
 <summary>Example Response</summary>
@@ -137,7 +137,7 @@ curl -X GET "https://api.proconnectcareer.com/user-educations/need-approval" \
 | Name | Type | Required | Description |
 |------|------|----------|-------------|
 | `items` | object[] | **Yes** | Array of items |
-| `meta` | object | **Yes** | Pagination metadata |
+| `meta` | Meta | **Yes** | Pagination metadata |
 
 <details>
 <summary>Example Response</summary>
@@ -191,7 +191,7 @@ curl -X GET "https://api.proconnectcareer.com/user-educations/search" \
 | Name | Type | Required | Description |
 |------|------|----------|-------------|
 | `items` | object[] | **Yes** | Array of items |
-| `meta` | object | **Yes** | Pagination metadata |
+| `meta` | Meta | **Yes** | Pagination metadata |
 
 <details>
 <summary>Example Response</summary>

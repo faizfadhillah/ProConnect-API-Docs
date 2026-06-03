@@ -99,7 +99,7 @@ curl -X GET "https://api.proconnectcareer.com/mst-subscription/{id}" \
 | Name | Type | Required | Description |
 |------|------|----------|-------------|
 | `items` | object[] | **Yes** | Array of items |
-| `meta` | object | **Yes** | Pagination metadata |
+| `meta` | Meta | **Yes** | Pagination metadata |
 
 <details>
 <summary>Example Response</summary>

@@ -71,7 +71,8 @@ const config = {
         logo: {
           alt: 'ProConnect Logo',
           src: 'img/logo.svg',
-          style: {height: '32px'},
+          srcDark: 'img/logo-white.svg',
+          style: {height: '24px'},
         },
         items: [
           {
@@ -104,8 +105,8 @@ const config = {
         copyright: ' ',
       },
       prism: {
-        theme: prismThemes.github,
-        darkTheme: prismThemes.dracula,
+        theme: prismThemes.vsLight,
+        darkTheme: prismThemes.vsDark,
         additionalLanguages: ['bash', 'json'],
       },
       colorMode: {

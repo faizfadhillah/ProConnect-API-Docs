@@ -98,7 +98,7 @@ curl -X GET "https://api.proconnectcareer.com/applicant-legal-files/{applicantId
 | Name | Type | Required | Description |
 |------|------|----------|-------------|
 | `items` | object[] | **Yes** | Array of items |
-| `meta` | object | **Yes** | Pagination metadata |
+| `meta` | Meta | **Yes** | Pagination metadata |
 
 <details>
 <summary>Example Response</summary>

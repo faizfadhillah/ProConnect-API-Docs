@@ -35,6 +35,27 @@ Gets all users, decrypts their phone numbers from encrypted_user_data, and extra
 
 **201** — Migration completed successfully
 
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `total` | number | No | Total users processed |
+| `updated` | number | No | Users updated with phone_last_4_digits |
+| `skipped` | number | No | Users skipped (already have phone_last_4_digits or no phone) |
+| `errors` | number | No | Number of errors encountered |
+
+<details>
+<summary>Example Response</summary>
+
+```json
+{
+  "total": 0,
+  "updated": 0,
+  "skipped": 0,
+  "errors": 0
+}
+```
+
+</details>
+
 #### Example Request
 
 ```bash
@@ -56,6 +77,29 @@ Gets all user educations with major_id null but major string not empty, finds or
 #### Responses
 
 **201** — Migration completed successfully
+
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `total` | number | No | Total educations found to process |
+| `updated` | number | No | Educations successfully updated with major_id |
+| `created` | number | No | New majors created |
+| `skipped` | number | No | Educations skipped (empty major after trim) |
+| `errors` | number | No | Number of errors encountered |
+
+<details>
+<summary>Example Response</summary>
+
+```json
+{
+  "total": 0,
+  "updated": 0,
+  "created": 0,
+  "skipped": 0,
+  "errors": 0
+}
+```
+
+</details>
 
 #### Example Request
 

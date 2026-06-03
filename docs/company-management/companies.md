@@ -101,12 +101,12 @@ curl -X GET "https://api.proconnectcareer.com/mst-companies" \
 | `region_id` | string | **Yes** | ID region |
 | `other_region` | string | No | Region lain (opsional) |
 | `is_verified` | boolean | **Yes** | Status verifikasi perusahaan |
-| `status` | object | **Yes** | — |
+| `status` | CompanyStatus | **Yes** | — |
 | `country_id` | string | No | id from mst_salary_country |
 | `other_country` | string | No | Other Country |
 | `is_outside_indo` | boolean | **Yes** | is outside indo |
 | `use_hq_business_profile` | boolean | **Yes** | Flag is business profile data, inherit from HQ |
-| `departments` | object[] | **Yes** | List of departments assigned to this company |
+| `departments` | MstDepartmentResponseDto[] | **Yes** | List of departments assigned to this company |
 | `available_job_count` | number | No | Count of published jobs for this company when showAvailableJobCount=true |
 
 <details>
@@ -185,7 +185,7 @@ Returns all branches (including HQ) for a company. Accepts either a company ID o
 | Name | Type | Required | Description |
 |------|------|----------|-------------|
 | `items` | object[] | **Yes** | Array of items |
-| `meta` | object | **Yes** | Pagination metadata |
+| `meta` | Meta | **Yes** | Pagination metadata |
 
 <details>
 <summary>Example Response</summary>
@@ -232,7 +232,7 @@ Returns all departments that can be assigned to a company, including both compan
 | Name | Type | Required | Description |
 |------|------|----------|-------------|
 | `items` | object[] | **Yes** | Array of items |
-| `meta` | object | **Yes** | Pagination metadata |
+| `meta` | Meta | **Yes** | Pagination metadata |
 
 <details>
 <summary>Example Response</summary>
@@ -279,7 +279,7 @@ Retrieves all PUBLISHED departments mapped to a specific company. Useful for dis
 | Name | Type | Required | Description |
 |------|------|----------|-------------|
 | `items` | object[] | **Yes** | Array of items |
-| `meta` | object | **Yes** | Pagination metadata |
+| `meta` | Meta | **Yes** | Pagination metadata |
 
 <details>
 <summary>Example Response</summary>
@@ -352,7 +352,7 @@ curl -X GET "https://api.proconnectcareer.com/mst-companies/departments/{id}" \
 | `encrypted_date_of_birth` | string | **Yes** | Encrypted date of birth |
 | `encrypted_address` | string | **Yes** | Encrypted address |
 | `encrypted_nik` | string | **Yes** | Encrypted NIK |
-| `assignments` | object[] | **Yes** | Complete role assignment history for the member with detailed relations |
+| `assignments` | CompanyMemberResponseDto[] | **Yes** | Complete role assignment history for the member with detailed relations |
 
 <details>
 <summary>Example Response</summary>
@@ -432,7 +432,7 @@ curl -X GET "https://api.proconnectcareer.com/mst-companies/member-detail" \
 | Name | Type | Required | Description |
 |------|------|----------|-------------|
 | `items` | object[] | **Yes** | Array of items |
-| `meta` | object | **Yes** | Pagination metadata |
+| `meta` | CompanyMemberMeta | **Yes** | Pagination metadata |
 
 <details>
 <summary>Example Response</summary>
@@ -530,7 +530,7 @@ curl -X GET "https://api.proconnectcareer.com/mst-companies/metrics" \
 | Name | Type | Required | Description |
 |------|------|----------|-------------|
 | `items` | object[] | **Yes** | Array of items |
-| `meta` | object | **Yes** | Pagination metadata |
+| `meta` | Meta | **Yes** | Pagination metadata |
 
 <details>
 <summary>Example Response</summary>
@@ -599,7 +599,7 @@ Content-Type: `application/json`
 | `is_outside_indo` | boolean | No | is outside indo |
 | `use_hq_business_profile` | boolean | No | Flag is same with hq |
 | `is_verified` | boolean | **Yes** | Status verifikasi perusahaan |
-| `status` | object | **Yes** | — |
+| `status` | CompanyStatus | **Yes** | — |
 | `department_ids` | string[] | No | List of department IDs to assign to this company |
 
 #### Responses
@@ -634,12 +634,12 @@ Content-Type: `application/json`
 | `region_id` | string | **Yes** | ID region |
 | `other_region` | string | No | Region lain (opsional) |
 | `is_verified` | boolean | **Yes** | Status verifikasi perusahaan |
-| `status` | object | **Yes** | — |
+| `status` | CompanyStatus | **Yes** | — |
 | `country_id` | string | No | id from mst_salary_country |
 | `other_country` | string | No | Other Country |
 | `is_outside_indo` | boolean | **Yes** | is outside indo |
 | `use_hq_business_profile` | boolean | **Yes** | Flag is business profile data, inherit from HQ |
-| `departments` | object[] | **Yes** | List of departments assigned to this company |
+| `departments` | MstDepartmentResponseDto[] | **Yes** | List of departments assigned to this company |
 | `available_job_count` | number | No | Count of published jobs for this company when showAvailableJobCount=true |
 
 <details>
@@ -762,7 +762,7 @@ Content-Type: `application/json`
 |------|------|----------|-------------|
 | `new_owner_user_id` | string | **Yes** | New owner user ID |
 | `company_hq_id` | string | **Yes** | Company HQ ID |
-| `updated_placement` | object | **Yes** | Updated placement for the new owner |
+| `updated_placement` | UpdatedPlacementDto | **Yes** | Updated placement for the new owner |
 
 #### Responses
 
@@ -810,7 +810,7 @@ Content-Type: `application/json`
 | `encrypted_date_of_birth` | string | **Yes** | The encrypted date of birth of the user |
 | `encrypted_address` | string | **Yes** | The encrypted address of the user |
 | `encrypted_nik` | string | **Yes** | The encrypted nik of the user |
-| `assignments` | object[] | **Yes** | Array of role assignments to upsert (create or update) |
+| `assignments` | UpsertUserRoleAssignmentDto[] | **Yes** | Array of role assignments to upsert (create or update) |
 
 #### Responses
 
@@ -848,7 +848,7 @@ Content-Type: `application/json`
 | `encrypted_nik` | string | **Yes** | — |
 | `encrypted_phone` | string | **Yes** | — |
 | `encrypted_address` | string | **Yes** | — |
-| `assignments` | object[] | **Yes** | The role assignments created/updated for the member |
+| `assignments` | UserRoleAssignmentHistoryResponseDto[] | **Yes** | The role assignments created/updated for the member |
 
 <details>
 <summary>Example Response</summary>
@@ -966,7 +966,7 @@ Content-Type: `application/json`
 | `is_outside_indo` | boolean | No | is outside indo |
 | `use_hq_business_profile` | boolean | No | Flag is same with hq |
 | `is_verified` | boolean | No | Status verifikasi perusahaan |
-| `status` | object | No | — |
+| `status` | CompanyStatus | No | — |
 | `department_ids` | string[] | No | List of department IDs to assign to this company |
 
 #### Responses
@@ -1001,12 +1001,12 @@ Content-Type: `application/json`
 | `region_id` | string | **Yes** | ID region |
 | `other_region` | string | No | Region lain (opsional) |
 | `is_verified` | boolean | **Yes** | Status verifikasi perusahaan |
-| `status` | object | **Yes** | — |
+| `status` | CompanyStatus | **Yes** | — |
 | `country_id` | string | No | id from mst_salary_country |
 | `other_country` | string | No | Other Country |
 | `is_outside_indo` | boolean | **Yes** | is outside indo |
 | `use_hq_business_profile` | boolean | **Yes** | Flag is business profile data, inherit from HQ |
-| `departments` | object[] | **Yes** | List of departments assigned to this company |
+| `departments` | MstDepartmentResponseDto[] | **Yes** | List of departments assigned to this company |
 | `available_job_count` | number | No | Count of published jobs for this company when showAvailableJobCount=true |
 
 <details>

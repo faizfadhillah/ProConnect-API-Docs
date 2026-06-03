@@ -71,7 +71,7 @@ Fetches detailed role assignment history by user ID
 | Name | Type | Required | Description |
 |------|------|----------|-------------|
 | `items` | object[] | **Yes** | Array of items |
-| `meta` | object | **Yes** | Pagination metadata |
+| `meta` | Meta | **Yes** | Pagination metadata |
 
 <details>
 <summary>Example Response</summary>
@@ -167,7 +167,7 @@ Content-Type: `application/json`
 | `user_id` | string | **Yes** | User ID |
 | `company_hq_id` | string | No | Company HQ ID for employer scope; null for candidate scope |
 | `role` | `string` enum: `sys_admin`, `candidate`, `employer`, `admin`, `admin_viewer`, `pic_school` | **Yes** | High-level role for this scope |
-| `assignments` | object[] | No | Assignments for this user and scope. For non-employer roles (except PIC_SCHOOL), omitting assignments auto-populates one active assignment from scope role. Send an empty array to delete all assignments in scope. |
+| `assignments` | UpsertUserRoleAssignmentDto[] | No | Assignments for this user and scope. For non-employer roles (except PIC_SCHOOL), omitting assignments auto-populates one active assignment from scope role. Send an empty array to delete all assignments in scope. |
 | `wizard_state` | object | No | Wizard state for this scope (optional) |
 | `last_wizard_state` | number | No | Last wizard step index for this scope (optional) |
 

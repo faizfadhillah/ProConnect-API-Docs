@@ -52,7 +52,7 @@ Authorization: Bearer <your_access_token>
 | Name | Type | Required | Description |
 |------|------|----------|-------------|
 | `items` | object[] | **Yes** | Array of items |
-| `meta` | object | **Yes** | Pagination metadata |
+| `meta` | Meta | **Yes** | Pagination metadata |
 
 <details>
 <summary>Example Response</summary>
@@ -114,7 +114,7 @@ curl -X GET "https://api.proconnectcareer.com/applicant-job-steps/search" \
 | Name | Type | Required | Description |
 |------|------|----------|-------------|
 | `items` | object[] | **Yes** | Array of items |
-| `meta` | object | **Yes** | Pagination metadata |
+| `meta` | Meta | **Yes** | Pagination metadata |
 
 <details>
 <summary>Example Response</summary>
@@ -172,7 +172,7 @@ Content-Type: `application/json`
 | `status` | `string` enum: `PENDING`, `CURRENT`, `REVISED`, `ACCEPTED`, `SCHEDULED`, `RESCHEDULED`, `FAILED`, `SUBMITTED`, `SKIPPED` | **Yes** | The status of the applicant job step |
 | `notes` | string | **Yes** | Notes for the applicant job step |
 | `attributes` | object | **Yes** | Attributes for the applicant job step |
-| `questionnaireAnswers` | object[] | **Yes** | — |
+| `questionnaireAnswers` | QuestionnaireAnswer[] | **Yes** | — |
 
 <details>
 <summary>Example Response</summary>
@@ -248,7 +248,7 @@ Content-Type: `application/json`
 | `status` | `string` enum: `PENDING`, `CURRENT`, `REVISED`, `ACCEPTED`, `SCHEDULED`, `RESCHEDULED`, `FAILED`, `SUBMITTED`, `SKIPPED` | **Yes** | The status of the applicant job step |
 | `notes` | string | **Yes** | Notes for the applicant job step |
 | `attributes` | object | **Yes** | Attributes for the applicant job step |
-| `questionnaireAnswers` | object[] | **Yes** | — |
+| `questionnaireAnswers` | QuestionnaireAnswer[] | **Yes** | — |
 
 <details>
 <summary>Example Response</summary>

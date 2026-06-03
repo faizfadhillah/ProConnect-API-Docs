@@ -49,7 +49,7 @@ Authorization: Bearer <your_access_token>
 | Name | Type | Required | Description |
 |------|------|----------|-------------|
 | `items` | object[] | **Yes** | Array of items |
-| `meta` | object | **Yes** | Pagination metadata |
+| `meta` | Meta | **Yes** | Pagination metadata |
 
 <details>
 <summary>Example Response</summary>
@@ -99,7 +99,7 @@ curl -X GET "https://api.proconnectcareer.com/bulk-upload/users/candidate/batche
 | Name | Type | Required | Description |
 |------|------|----------|-------------|
 | `items` | object[] | **Yes** | Array of items |
-| `meta` | object | **Yes** | Pagination metadata |
+| `meta` | Meta | **Yes** | Pagination metadata |
 
 <details>
 <summary>Example Response</summary>
@@ -181,6 +181,14 @@ curl -X GET "https://api.proconnectcareer.com/bulk-upload/users/candidate/templa
 
 **Authentication:** Required (Bearer Token)
 
+#### Request Body
+
+Content-Type: `multipart/form-data`
+
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `file` | string | No | Excel (.xlsx) or CSV file with candidate data |
+
 #### Responses
 
 **201** — File uploaded successfully and processing started
@@ -192,7 +200,10 @@ curl -X GET "https://api.proconnectcareer.com/bulk-upload/users/candidate/templa
 ```bash
 curl -X POST "https://api.proconnectcareer.com/bulk-upload/users/candidate/import" \
   -H "Authorization: Bearer <token>" \
-  -H "Content-Type: application/json"
+  -H "Content-Type: application/json" \
+  -d '{
+    "file": "<file>"
+  }'
 ```
 
 ---
@@ -234,6 +245,15 @@ curl -X POST "https://api.proconnectcareer.com/bulk-upload/users/candidate/retry
 
 **Authentication:** Required (Bearer Token)
 
+#### Request Body
+
+Content-Type: `application/json`
+
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `batchId` | string | No | Batch ID to delete all failed registrations from |
+| `rowId` | string | No | Row ID to delete a specific failed registration |
+
 #### Responses
 
 **200** — Failed registrations deleted successfully
@@ -245,7 +265,11 @@ curl -X POST "https://api.proconnectcareer.com/bulk-upload/users/candidate/retry
 ```bash
 curl -X DELETE "https://api.proconnectcareer.com/bulk-upload/users/candidate/delete-failed" \
   -H "Authorization: Bearer <token>" \
-  -H "Content-Type: application/json"
+  -H "Content-Type: application/json" \
+  -d '{
+    "batchId": "<batchId>",
+    "rowId": "<rowId>"
+  }'
 ```
 
 ---

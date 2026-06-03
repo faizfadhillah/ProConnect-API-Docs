@@ -44,7 +44,7 @@ Authorization: Bearer <your_access_token>
 | `job_name` | string | **Yes** | Job name (title) |
 | `percentage` | number | **Yes** | Skill match percentage (0-100 or -1 if no skills in job) |
 | `is_education_match` | boolean | **Yes** | Flag indicating if match is due to education-profession mapping and job title matches profession name |
-| `user` | object | **Yes** | User information |
+| `user` | UserInfoDto | **Yes** | User information |
 | `verified_match_skills` | string[] | **Yes** | List of verified skill names that match job requirements |
 | `unverified_match_skills` | string[] | **Yes** | List of unverified skill names that match job requirements |
 | `unmatched_job_skills` | string[] | **Yes** | List of job skill names that user doesn't have |

@@ -48,7 +48,7 @@ Returns email logs enriched with queue job status, retry information, and estima
 
 | Name | Type | Required | Description |
 |------|------|----------|-------------|
-| `emailLogs` | object[] | **Yes** | List of email logs with queue information |
+| `emailLogs` | EmailLogWithQueueDto[] | **Yes** | List of email logs with queue information |
 | `total` | number | **Yes** | Total number of email logs |
 | `limit` | number | **Yes** | Pagination limit |
 | `offset` | number | **Yes** | Pagination offset |
@@ -102,7 +102,7 @@ Returns detailed information about all jobs currently in the queue, including th
 
 | Name | Type | Required | Description |
 |------|------|----------|-------------|
-| `jobs` | object[] | **Yes** | List of jobs in the queue |
+| `jobs` | JobDetailsDto[] | **Yes** | List of jobs in the queue |
 | `total` | number | **Yes** | Total number of jobs |
 | `limit` | number | **Yes** | Pagination limit |
 | `offset` | number | **Yes** | Pagination offset |
@@ -181,7 +181,7 @@ Returns comprehensive information about the email queue including job counts, Re
 |------|------|----------|-------------|
 | `queueName` | string | **Yes** | Queue name |
 | `isConnected` | boolean | **Yes** | Redis connection status |
-| `statistics` | object | **Yes** | Queue statistics |
+| `statistics` | QueueStatisticsDto | **Yes** | Queue statistics |
 | `lastUpdated` | string | **Yes** | Timestamp of last update |
 
 <details>

@@ -53,7 +53,7 @@ Authorization: Bearer <your_access_token>
 | Name | Type | Required | Description |
 |------|------|----------|-------------|
 | `items` | object[] | **Yes** | Array of items |
-| `meta` | object | **Yes** | Pagination metadata |
+| `meta` | Meta | **Yes** | Pagination metadata |
 
 <details>
 <summary>Example Response</summary>
@@ -110,7 +110,7 @@ curl -X GET "https://api.proconnectcareer.com/questionnaire-answers/search" \
 | Name | Type | Required | Description |
 |------|------|----------|-------------|
 | `items` | object[] | **Yes** | Array of items |
-| `meta` | object | **Yes** | Pagination metadata |
+| `meta` | Meta | **Yes** | Pagination metadata |
 
 <details>
 <summary>Example Response</summary>
@@ -234,7 +234,7 @@ Content-Type: `application/json`
 
 | Name | Type | Required | Description |
 |------|------|----------|-------------|
-| `data` | object[] | **Yes** | Array of questionnaire answers to create |
+| `data` | CreateQuestionnaireAnswerDto[] | **Yes** | Array of questionnaire answers to create |
 
 #### Responses
 
@@ -338,7 +338,7 @@ Content-Type: `application/json`
 
 | Name | Type | Required | Description |
 |------|------|----------|-------------|
-| `data` | object[] | **Yes** | Array of questionnaire answers to update |
+| `data` | BulkUpdateQuestionnaireAnswerItemDto[] | **Yes** | Array of questionnaire answers to update |
 
 #### Responses
 
