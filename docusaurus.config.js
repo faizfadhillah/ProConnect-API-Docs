@@ -79,7 +79,7 @@ const config = {
             type: 'docSidebar',
             sidebarId: 'apiSidebar',
             position: 'left',
-            label: 'API Reference',
+            label: 'Developer Docs',
           },
           {
             href: 'https://api.proconnectcareer.com/api-json',
