@@ -21,7 +21,6 @@ Authorization: Bearer <your_access_token>
 | <span class="method-badge method-get">GET</span> | `/jobs` | Get all jobs |
 | <span class="method-badge method-get">GET</span> | `/jobs/{id}` | Get a job by ID |
 | <span class="method-badge method-get">GET</span> | `/jobs/public` | Get public jobs list by company |
-| <span class="method-badge method-get">GET</span> | `/jobs/public/all` | Get public jobs across all companies (paginated) |
 | <span class="method-badge method-get">GET</span> | `/jobs/public/slug/{slug}` | Get a published job by slug (public, no auth) |
 | <span class="method-badge method-get">GET</span> | `/jobs/search` | Search with filters |
 | <span class="method-badge method-get">GET</span> | `/jobs/trigger-auto-close` | Trigger auto-close (superadmin only) |
@@ -118,53 +117,6 @@ curl -X GET "https://api.proconnectcareer.com/jobs/{id}" \
 
 ```bash
 curl -X GET "https://api.proconnectcareer.com/jobs/public" \
-  -H "Authorization: Bearer <token>" \
-  -H "Content-Type: application/json"
-```
-
----
-
-### <span class="method-badge method-get">GET</span> `/jobs/public/all`
-
-**Get public jobs across all companies (paginated)**
-
-Public endpoint used by the landing-site jobs board. Returns published jobs across all companies with pagination. Default limit 10, max 50.
-
-**Authentication:** Required (Bearer Token)
-
-#### Parameters
-
-| Name | In | Type | Required | Description |
-|------|-----|------|----------|-------------|
-| `status` | query | `string` enum: `DRAFT`, `PUBLISH`, `CLOSE` | No | — |
-| `page` | query | number | No | — |
-| `limit` | query | number | No | — |
-
-#### Responses
-
-**200** — Public jobs list across all companies.
-
-| Name | Type | Required | Description |
-|------|------|----------|-------------|
-| `items` | object[] | **Yes** | Array of items |
-| `meta` | Meta | **Yes** | Pagination metadata |
-
-<details>
-<summary>Example Response</summary>
-
-```json
-{
-  "items": [],
-  "meta": {}
-}
-```
-
-</details>
-
-#### Example Request
-
-```bash
-curl -X GET "https://api.proconnectcareer.com/jobs/public/all" \
   -H "Authorization: Bearer <token>" \
   -H "Content-Type: application/json"
 ```
