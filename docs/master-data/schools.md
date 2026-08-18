@@ -18,6 +18,7 @@ Authorization: Bearer <your_access_token>
 
 | Method | Path | Summary |
 |--------|------|---------|
+| <span class="method-badge method-get">GET</span> | `/mst-schools/public/all` | Get public schools across all (paginated) |
 | <span class="method-badge method-get">GET</span> | `/mst-schools/search` | Search with filters |
 | <span class="method-badge method-post">POST</span> | `/mst-schools` | Create a new school level |
 | <span class="method-badge method-post">POST</span> | `/mst-schools/import-xls` | MstSchoolsController_uploadExcel |
@@ -25,6 +26,52 @@ Authorization: Bearer <your_access_token>
 | <span class="method-badge method-delete">DELETE</span> | `/mst-schools/{id}` | Delete an school level |
 
 ## Endpoint Details
+
+### <span class="method-badge method-get">GET</span> `/mst-schools/public/all`
+
+**Get public schools across all (paginated)**
+
+Public endpoint used by the landing-site Solution page. Returns schools with pagination. Default limit 10, max 100.
+
+**Authentication:** Required (Bearer Token)
+
+#### Parameters
+
+| Name | In | Type | Required | Description |
+|------|-----|------|----------|-------------|
+| `page` | query | number | No | — |
+| `limit` | query | number | No | — |
+
+#### Responses
+
+**200** — Public schools list across all.
+
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `items` | object[] | **Yes** | Array of items |
+| `meta` | Meta | **Yes** | Pagination metadata |
+
+<details>
+<summary>Example Response</summary>
+
+```json
+{
+  "items": [],
+  "meta": {}
+}
+```
+
+</details>
+
+#### Example Request
+
+```bash
+curl -X GET "https://api.proconnectcareer.com/mst-schools/public/all" \
+  -H "Authorization: Bearer <token>" \
+  -H "Content-Type: application/json"
+```
+
+---
 
 ### <span class="method-badge method-get">GET</span> `/mst-schools/search`
 
