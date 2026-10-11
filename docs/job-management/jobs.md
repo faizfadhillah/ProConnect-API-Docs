@@ -204,6 +204,14 @@ curl -X GET "https://api.proconnectcareer.com/jobs/public/all" \
 | `close_date` | string | No | Date when the job is automatically closed (optional). Date-only (YYYY-MM-DD) in GMT+7 (WIB). |
 | `created_at` | string | **Yes** | When the job was created (ISO 8601) |
 | `updated_at` | string | **Yes** | When the job was last updated (ISO 8601) |
+| `min_salary` | number | No | Minimum salary |
+| `max_salary` | number | No | Maximum salary |
+| `salary_country` | object | No | Salary currency info |
+| `is_outside_indo` | boolean | No | Whether the job is located outside Indonesia |
+| `other_region` | string | No | Region/city when job is outside Indonesia |
+| `other_country` | string | No | Country when job is outside Indonesia |
+| `region` | object | No | Indonesia region (when is_outside_indo is false) |
+| `similar_jobs` | JobPublicResponseDto[] | No | Similar published jobs (same location + overlapping profession). Present on public slug detail and GET /jobs/:id. |
 
 <details>
 <summary>Example Response</summary>
@@ -224,7 +232,15 @@ curl -X GET "https://api.proconnectcareer.com/jobs/public/all" \
   "open_date": "<open_date>",
   "close_date": "<close_date>",
   "created_at": "<created_at>",
-  "updated_at": "<updated_at>"
+  "updated_at": "<updated_at>",
+  "min_salary": 0,
+  "max_salary": 0,
+  "salary_country": {},
+  "is_outside_indo": true,
+  "other_region": "<other_region>",
+  "other_country": "<other_country>",
+  "region": {},
+  "similar_jobs": []
 }
 ```
 
