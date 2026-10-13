@@ -29,6 +29,7 @@ Authorization: Bearer <your_access_token>
 | <span class="method-badge method-post">POST</span> | `/users/forgot-password` | Forgot Password a user |
 | <span class="method-badge method-post">POST</span> | `/users/import-xls` | UsersController_uploadExcel |
 | <span class="method-badge method-post">POST</span> | `/users/public-request-otp` | Send OTP to user email |
+| <span class="method-badge method-post">POST</span> | `/users/resolve-email-by-phone` | Resolve account email from a verified phone number (FE then signs in with email+password) |
 | <span class="method-badge method-post">POST</span> | `/users/send-otp` | Send OTP to user email or phone |
 | <span class="method-badge method-post">POST</span> | `/users/verify-otp` | Verify user OTP (email or phone) |
 | <span class="method-badge method-patch">PATCH</span> | `/users/{id}` | Update a user |
@@ -80,6 +81,7 @@ curl -X GET "https://api.proconnectcareer.com/users" \
 | `photo_url` | string | **Yes** | The photo profile URL |
 | `full_name` | string | **Yes** | The full name of the user |
 | `email` | string | **Yes** | The email address of the user |
+| `phone_hash` | string | **Yes** | Deterministic HMAC of the user's E.164 phone number (exact lookup + uniqueness without storing plaintext). Set when the phone is verified. |
 | `gender` | `string` enum: `male`, `female`, `non-binary` | **Yes** | The gender of the user |
 | `birth_year` | string | **Yes** | The birth year |
 | `region_id` | string | **Yes** | The ID of the region the user belongs to |
@@ -124,6 +126,7 @@ curl -X GET "https://api.proconnectcareer.com/users" \
   "photo_url": "<photo_url>",
   "full_name": "<full_name>",
   "email": "<email>",
+  "phone_hash": "<phone_hash>",
   "gender": "male",
   "birth_year": "<birth_year>",
   "region_id": "<region_id>",
@@ -238,6 +241,7 @@ curl -X GET "https://api.proconnectcareer.com/users/eligible-to-send-otp" \
 | `photo_url` | string | **Yes** | The photo profile URL |
 | `full_name` | string | **Yes** | The full name of the user |
 | `email` | string | **Yes** | The email address of the user |
+| `phone_hash` | string | **Yes** | Deterministic HMAC of the user's E.164 phone number (exact lookup + uniqueness without storing plaintext). Set when the phone is verified. |
 | `gender` | `string` enum: `male`, `female`, `non-binary` | **Yes** | The gender of the user |
 | `birth_year` | string | **Yes** | The birth year |
 | `region_id` | string | **Yes** | The ID of the region the user belongs to |
@@ -288,6 +292,7 @@ curl -X GET "https://api.proconnectcareer.com/users/eligible-to-send-otp" \
   "photo_url": "<photo_url>",
   "full_name": "<full_name>",
   "email": "<email>",
+  "phone_hash": "<phone_hash>",
   "gender": "male",
   "birth_year": "<birth_year>",
   "region_id": "<region_id>",
@@ -430,6 +435,7 @@ Content-Type: `application/json`
 | `photo_url` | string | **Yes** | The photo profile URL |
 | `full_name` | string | **Yes** | The full name of the user |
 | `email` | string | **Yes** | The email address of the user |
+| `phone_hash` | string | **Yes** | Deterministic HMAC of the user's E.164 phone number (exact lookup + uniqueness without storing plaintext). Set when the phone is verified. |
 | `gender` | `string` enum: `male`, `female`, `non-binary` | **Yes** | The gender of the user |
 | `birth_year` | string | **Yes** | The birth year |
 | `region_id` | string | **Yes** | The ID of the region the user belongs to |
@@ -474,6 +480,7 @@ Content-Type: `application/json`
   "photo_url": "<photo_url>",
   "full_name": "<full_name>",
   "email": "<email>",
+  "phone_hash": "<phone_hash>",
   "gender": "male",
   "birth_year": "<birth_year>",
   "region_id": "<region_id>",
@@ -740,6 +747,41 @@ curl -X POST "https://api.proconnectcareer.com/users/public-request-otp" \
 
 ---
 
+### <span class="method-badge method-post">POST</span> `/users/resolve-email-by-phone`
+
+**Resolve account email from a verified phone number (FE then signs in with email+password)**
+
+**Authentication:** Required (Bearer Token)
+
+#### Request Body
+
+Content-Type: `application/json`
+
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `phone` | string | **Yes** | — |
+
+#### Responses
+
+**201** — Email resolved
+
+**404** — Phone not found or not verified
+
+**429** — Too many requests (rate limited)
+
+#### Example Request
+
+```bash
+curl -X POST "https://api.proconnectcareer.com/users/resolve-email-by-phone" \
+  -H "Authorization: Bearer <token>" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "phone": "string"
+  }'
+```
+
+---
+
 ### <span class="method-badge method-post">POST</span> `/users/send-otp`
 
 **Send OTP to user email or phone**
@@ -871,6 +913,7 @@ Content-Type: `application/json`
 | `photo_url` | string | **Yes** | The photo profile URL |
 | `full_name` | string | **Yes** | The full name of the user |
 | `email` | string | **Yes** | The email address of the user |
+| `phone_hash` | string | **Yes** | Deterministic HMAC of the user's E.164 phone number (exact lookup + uniqueness without storing plaintext). Set when the phone is verified. |
 | `gender` | `string` enum: `male`, `female`, `non-binary` | **Yes** | The gender of the user |
 | `birth_year` | string | **Yes** | The birth year |
 | `region_id` | string | **Yes** | The ID of the region the user belongs to |
@@ -915,6 +958,7 @@ Content-Type: `application/json`
   "photo_url": "<photo_url>",
   "full_name": "<full_name>",
   "email": "<email>",
+  "phone_hash": "<phone_hash>",
   "gender": "male",
   "birth_year": "<birth_year>",
   "region_id": "<region_id>",
