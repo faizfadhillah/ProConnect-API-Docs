@@ -139,6 +139,12 @@ Public endpoint used by the landing-site jobs board. Returns published jobs acro
 | `status` | query | `string` enum: `DRAFT`, `PUBLISH`, `CLOSE` | No | — |
 | `page` | query | number | No | — |
 | `limit` | query | number | No | — |
+| `country` | query | string | No | Filter by country name. Indonesia matches in-country region jobs; other names match other_country (outside Indonesia). |
+| `search` | query | string | No | Search in title, company name, and location fields. |
+| `employment_status` | query | string | No | Filter by employment status stored on the job (e.g. full-time, part-time, contract). |
+| `domicile_status` | query | string | No | Filter by work arrangement / domicile status (e.g. on-site, remote, hybrid). |
+| `category` | query | string | No | Curated marketing category; matches job title keywords (e.g. Front Office, Culinary). |
+| `sort` | query | string | No | Sort order: recent (default), oldest, or title. |
 
 #### Responses
 
