@@ -89,7 +89,7 @@ curl -X GET "https://api.proconnectcareer.com/jobs/{id}" \
 | Name | In | Type | Required | Description |
 |------|-----|------|----------|-------------|
 | `company_id` | query | string | **Yes** | — |
-| `status` | query | `string` enum: `DRAFT`, `PUBLISH`, `CLOSE` | No | — |
+| `status` | query | `string` enum: `DRAFT`, `PUBLISH`, `CLOSE` | No | Filter by status. Omit for PUBLISH+CLOSE (DRAFT never returned). Pass PUBLISH or CLOSE for exact match. |
 | `page` | query | number | No | — |
 | `limit` | query | number | No | — |
 
@@ -128,7 +128,7 @@ curl -X GET "https://api.proconnectcareer.com/jobs/public" \
 
 **Get public jobs across all companies (paginated)**
 
-Public endpoint used by the landing-site jobs board. Returns published jobs across all companies with pagination. Default limit 10, max 50.
+Public endpoint used by the landing-site jobs board. Returns PUBLISH and CLOSE jobs across all companies with pagination (DRAFT excluded). Default limit 10, max 50. Pass status=PUBLISH or status=CLOSE to filter exactly.
 
 **Authentication:** Required (Bearer Token)
 
@@ -136,7 +136,7 @@ Public endpoint used by the landing-site jobs board. Returns published jobs acro
 
 | Name | In | Type | Required | Description |
 |------|-----|------|----------|-------------|
-| `status` | query | `string` enum: `DRAFT`, `PUBLISH`, `CLOSE` | No | — |
+| `status` | query | `string` enum: `DRAFT`, `PUBLISH`, `CLOSE` | No | Filter by status. Omit for PUBLISH+CLOSE (DRAFT never returned). Pass PUBLISH or CLOSE for exact match. |
 | `page` | query | number | No | — |
 | `limit` | query | number | No | — |
 | `country` | query | string | No | Filter by country name. Indonesia matches in-country region jobs; other names match other_country (outside Indonesia). |
