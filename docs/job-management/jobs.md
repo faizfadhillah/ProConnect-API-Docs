@@ -21,7 +21,9 @@ Authorization: Bearer <your_access_token>
 | <span class="method-badge method-get">GET</span> | `/jobs` | Get all jobs |
 | <span class="method-badge method-get">GET</span> | `/jobs/{id}` | Get a job by ID |
 | <span class="method-badge method-get">GET</span> | `/jobs/public` | Get public jobs list by company |
+| <span class="method-badge method-get">GET</span> | `/jobs/public/{id}` | Get a published job by id (public, no auth; legacy links) |
 | <span class="method-badge method-get">GET</span> | `/jobs/public/all` | Get public jobs across all companies (paginated) |
+| <span class="method-badge method-get">GET</span> | `/jobs/public/indexing-status` | Search-engine indexing integration status (public, no secrets) |
 | <span class="method-badge method-get">GET</span> | `/jobs/public/slug/{slug}` | Get a published job by slug (public, no auth) |
 | <span class="method-badge method-get">GET</span> | `/jobs/search` | Search with filters |
 | <span class="method-badge method-get">GET</span> | `/jobs/trigger-auto-close` | Trigger auto-close (superadmin only) |
@@ -89,7 +91,7 @@ curl -X GET "https://api.proconnectcareer.com/jobs/{id}" \
 | Name | In | Type | Required | Description |
 |------|-----|------|----------|-------------|
 | `company_id` | query | string | **Yes** | — |
-| `status` | query | `string` enum: `DRAFT`, `PUBLISH`, `CLOSE` | No | Filter by status. Omit for PUBLISH+CLOSE (DRAFT never returned). Pass PUBLISH or CLOSE for exact match. |
+| `status` | query | `string` enum: `DRAFT`, `PUBLISH`, `CLOSE`, `DELISTED` | No | Filter by status. Omit for PUBLISH+CLOSE (DRAFT/DELISTED never returned). Pass PUBLISH or CLOSE for exact match. |
 | `page` | query | number | No | — |
 | `limit` | query | number | No | — |
 
@@ -124,11 +126,9 @@ curl -X GET "https://api.proconnectcareer.com/jobs/public" \
 
 ---
 
-### <span class="method-badge method-get">GET</span> `/jobs/public/all`
+### <span class="method-badge method-get">GET</span> `/jobs/public/{id}`
 
-**Get public jobs across all companies (paginated)**
-
-Public endpoint used by the landing-site jobs board. Returns PUBLISH and CLOSE jobs across all companies with pagination (DRAFT excluded). Default limit 10, max 50. Pass status=PUBLISH or status=CLOSE to filter exactly.
+**Get a published job by id (public, no auth; legacy links)**
 
 **Authentication:** Required (Bearer Token)
 
@@ -136,7 +136,96 @@ Public endpoint used by the landing-site jobs board. Returns PUBLISH and CLOSE j
 
 | Name | In | Type | Required | Description |
 |------|-----|------|----------|-------------|
-| `status` | query | `string` enum: `DRAFT`, `PUBLISH`, `CLOSE` | No | Filter by status. Omit for PUBLISH+CLOSE (DRAFT never returned). Pass PUBLISH or CLOSE for exact match. |
+| `id` | path | string | **Yes** | — |
+
+#### Responses
+
+**200** — Public job view.
+
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `id` | string | **Yes** | Job ID |
+| `company_id` | string | **Yes** | Company ID that owns the job |
+| `status` | `string` enum: `DRAFT`, `PUBLISH`, `CLOSE`, `DELISTED` | **Yes** | Job status on public lists: PUBLISH or CLOSE (DRAFT/DELISTED never returned) |
+| `title` | string | **Yes** | Job title |
+| `slug` | string | **Yes** | URL-friendly slug (used by GET /jobs/public/slug/:slug) |
+| `location` | string | **Yes** | Job location (region full name or other_region + other_country for outside Indonesia) |
+| `company_name` | string | **Yes** | Company brand name |
+| `company_logo_url` | string | **Yes** | Company logo URL (relative or absolute) |
+| `description` | string | **Yes** | Job description |
+| `employment_status` | string[] | **Yes** | Employment type(s): full-time, part-time, contract, etc. |
+| `domicile_status` | string[] | **Yes** | Work arrangement: on-site, remote, hybrid, etc. |
+| `open_date` | string | No | Date when the job is automatically published (optional). Date-only (YYYY-MM-DD) in GMT+7 (WIB). |
+| `close_date` | string | No | Date when the job is automatically closed (optional). Date-only (YYYY-MM-DD) in GMT+7 (WIB). |
+| `created_at` | string | **Yes** | When the job was created (ISO 8601) |
+| `updated_at` | string | **Yes** | When the job was last updated (ISO 8601) |
+| `min_salary` | number | No | Minimum salary |
+| `max_salary` | number | No | Maximum salary |
+| `salary_country` | object | No | Salary currency info |
+| `is_outside_indo` | boolean | No | Whether the job is located outside Indonesia |
+| `other_region` | string | No | Region/city when job is outside Indonesia |
+| `other_country` | string | No | Country when job is outside Indonesia |
+| `region` | object | No | Indonesia region (when is_outside_indo is false) |
+| `similar_jobs` | JobPublicResponseDto[] | No | Similar published jobs (overlapping profession OR same location; both preferred). Present on public slug detail and GET /jobs/:id. |
+
+<details>
+<summary>Example Response</summary>
+
+```json
+{
+  "id": "<id>",
+  "company_id": "<company_id>",
+  "status": "DRAFT",
+  "title": "<title>",
+  "slug": "<slug>",
+  "location": "<location>",
+  "company_name": "<company_name>",
+  "company_logo_url": "<company_logo_url>",
+  "description": "<description>",
+  "employment_status": [],
+  "domicile_status": [],
+  "open_date": "<open_date>",
+  "close_date": "<close_date>",
+  "created_at": "<created_at>",
+  "updated_at": "<updated_at>",
+  "min_salary": 0,
+  "max_salary": 0,
+  "salary_country": {},
+  "is_outside_indo": true,
+  "other_region": "<other_region>",
+  "other_country": "<other_country>",
+  "region": {},
+  "similar_jobs": []
+}
+```
+
+</details>
+
+**404** — Job not found or not published.
+
+#### Example Request
+
+```bash
+curl -X GET "https://api.proconnectcareer.com/jobs/public/{id}" \
+  -H "Authorization: Bearer <token>" \
+  -H "Content-Type: application/json"
+```
+
+---
+
+### <span class="method-badge method-get">GET</span> `/jobs/public/all`
+
+**Get public jobs across all companies (paginated)**
+
+Public endpoint used by the landing-site jobs board. Returns PUBLISH and CLOSE jobs across all companies with pagination (DRAFT/DELISTED excluded). Default limit 10, max 50. Pass status=PUBLISH or status=CLOSE to filter exactly.
+
+**Authentication:** Required (Bearer Token)
+
+#### Parameters
+
+| Name | In | Type | Required | Description |
+|------|-----|------|----------|-------------|
+| `status` | query | `string` enum: `DRAFT`, `PUBLISH`, `CLOSE`, `DELISTED` | No | Filter by status. Omit for PUBLISH+CLOSE (DRAFT/DELISTED never returned). Pass PUBLISH or CLOSE for exact match. |
 | `page` | query | number | No | — |
 | `limit` | query | number | No | — |
 | `country` | query | string | No | Filter by country name. Indonesia matches in-country region jobs; other names match other_country (outside Indonesia). |
@@ -144,6 +233,7 @@ Public endpoint used by the landing-site jobs board. Returns PUBLISH and CLOSE j
 | `employment_status` | query | string | No | Filter by employment status stored on the job (e.g. full-time, part-time, contract). |
 | `domicile_status` | query | string | No | Filter by work arrangement / domicile status (e.g. on-site, remote, hybrid). |
 | `category` | query | string | No | Curated marketing category; matches job title keywords (e.g. Front Office, Culinary). |
+| `region` | query | string | No | Filter by region or city name (matches the job's region, e.g. Jakarta, Bali, Bandung). |
 | `sort` | query | string | No | Sort order: recent (default), oldest, or title. |
 
 #### Responses
@@ -177,6 +267,28 @@ curl -X GET "https://api.proconnectcareer.com/jobs/public/all" \
 
 ---
 
+### <span class="method-badge method-get">GET</span> `/jobs/public/indexing-status`
+
+**Search-engine indexing integration status (public, no secrets)**
+
+Reports whether Google Indexing API credentials and IndexNow are configured on this deployment. Contains no key material.
+
+**Authentication:** Required (Bearer Token)
+
+#### Responses
+
+**200** — Indexing integration status.
+
+#### Example Request
+
+```bash
+curl -X GET "https://api.proconnectcareer.com/jobs/public/indexing-status" \
+  -H "Authorization: Bearer <token>" \
+  -H "Content-Type: application/json"
+```
+
+---
+
 ### <span class="method-badge method-get">GET</span> `/jobs/public/slug/{slug}`
 
 **Get a published job by slug (public, no auth)**
@@ -197,7 +309,7 @@ curl -X GET "https://api.proconnectcareer.com/jobs/public/all" \
 |------|------|----------|-------------|
 | `id` | string | **Yes** | Job ID |
 | `company_id` | string | **Yes** | Company ID that owns the job |
-| `status` | `string` enum: `DRAFT`, `PUBLISH`, `CLOSE` | **Yes** | Job status: DRAFT, PUBLISH, CLOSE |
+| `status` | `string` enum: `DRAFT`, `PUBLISH`, `CLOSE`, `DELISTED` | **Yes** | Job status on public lists: PUBLISH or CLOSE (DRAFT/DELISTED never returned) |
 | `title` | string | **Yes** | Job title |
 | `slug` | string | **Yes** | URL-friendly slug (used by GET /jobs/public/slug/:slug) |
 | `location` | string | **Yes** | Job location (region full name or other_region + other_country for outside Indonesia) |
@@ -390,7 +502,7 @@ Content-Type: `application/json`
 | `salary_country_id` | string | **Yes** | The ID of the SalaryCountry |
 | `min_salary` | number | **Yes** | The min of the SalaryCountry |
 | `max_salary` | number | **Yes** | The max of the SalaryCountry |
-| `status` | `string` enum: `DRAFT`, `PUBLISH`, `CLOSE` | No | the status of jobs |
+| `status` | `string` enum: `DRAFT`, `PUBLISH`, `CLOSE`, `DELISTED` | No | Job status: DRAFT, PUBLISH, CLOSE, or DELISTED (DELISTED is sysadmin/masterdata only) |
 | `employment_status` | string[] | **Yes** | The employment status |
 | `domicile_status` | string[] | **Yes** | The domicile status |
 | `interest_ids` | string[] | **Yes** | The multi interest id includes |
@@ -456,6 +568,9 @@ curl -X POST "https://api.proconnectcareer.com/jobs" \
 
 Content-Type: `application/json`
 
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| `close_date` | string | No | Date when the job is automatically closed (optional). On update, past dates are allowed (already-closed jobs). |
 
 #### Responses
 
@@ -467,7 +582,9 @@ Content-Type: `application/json`
 curl -X PATCH "https://api.proconnectcareer.com/jobs/{id}" \
   -H "Authorization: Bearer <token>" \
   -H "Content-Type: application/json" \
-  -d '{}'
+  -d '{
+    "close_date": "<close_date>"
+  }'
 ```
 
 ---
