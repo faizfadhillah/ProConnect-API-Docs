@@ -234,7 +234,7 @@ Public endpoint used by the landing-site jobs board. Returns PUBLISH and CLOSE j
 | `domicile_status` | query | string | No | Filter by work arrangement / domicile status (e.g. on-site, remote, hybrid). |
 | `category` | query | string | No | Curated marketing category; matches job title keywords (e.g. Front Office, Culinary). |
 | `region` | query | string | No | Filter by region or city name (matches the job's region, e.g. Jakarta, Bali, Bandung). |
-| `sort` | query | string | No | Sort order: recent (default), oldest, or title. |
+| `sort` | query | `string` enum: `recent`, `oldest`, `title` | No | recent (default): open jobs first, then created_at DESC. oldest: created_at ASC. title: title ASC. Non-default sorts do not force open-first. |
 
 #### Responses
 
