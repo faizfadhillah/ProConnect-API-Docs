@@ -166,7 +166,7 @@ curl -X GET "https://api.proconnectcareer.com/jobs/public" \
 | `other_region` | string | No | Region/city when job is outside Indonesia |
 | `other_country` | string | No | Country when job is outside Indonesia |
 | `region` | object | No | Indonesia region (when is_outside_indo is false) |
-| `similar_jobs` | JobPublicResponseDto[] | No | Similar published jobs (overlapping profession OR same location; both preferred). Present on public slug detail and GET /jobs/:id. |
+| `similar_jobs` | JobPublicResponseDto[] | No | Similar published jobs ranked by shared professions, skills, region/country, employment type, and company. Present on public slug/id detail and GET /jobs/:id. |
 
 <details>
 <summary>Example Response</summary>
@@ -329,7 +329,7 @@ curl -X GET "https://api.proconnectcareer.com/jobs/public/indexing-status" \
 | `other_region` | string | No | Region/city when job is outside Indonesia |
 | `other_country` | string | No | Country when job is outside Indonesia |
 | `region` | object | No | Indonesia region (when is_outside_indo is false) |
-| `similar_jobs` | JobPublicResponseDto[] | No | Similar published jobs (overlapping profession OR same location; both preferred). Present on public slug detail and GET /jobs/:id. |
+| `similar_jobs` | JobPublicResponseDto[] | No | Similar published jobs ranked by shared professions, skills, region/country, employment type, and company. Present on public slug/id detail and GET /jobs/:id. |
 
 <details>
 <summary>Example Response</summary>
